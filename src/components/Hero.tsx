@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Code2, Brain, BarChart3 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const nodes = [
   { id: 1, x: 40, y: 25 },
@@ -22,12 +22,6 @@ const edges = [
   [1, 2], [1, 3], [2, 4], [2, 5], [3, 6], [3, 8],
   [4, 7], [4, 9], [5, 9], [6, 7], [6, 10], [7, 12],
   [8, 11], [10, 11], [10, 12], [11, 8],
-];
-
-const floatingCards = [
-  { icon: Brain, label: "IA Local", x: "5%", y: "10%", delay: 0.5 },
-  { icon: Code2, label: "Clean Code", x: "70%", y: "5%", delay: 0.8 },
-  { icon: BarChart3, label: "Performance", x: "60%", y: "70%", delay: 1.1 },
 ];
 
 export default function Hero() {
@@ -171,26 +165,6 @@ export default function Hero() {
                 ))}
               </g>
             </svg>
-
-            {floatingCards.map((card, i) => (
-              <motion.div
-                key={i}
-                className="absolute bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-gray-200 dark:border-slate-700 rounded-xl p-3 shadow-lg z-20"
-                style={{ left: card.x, top: card.y }}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: card.delay, ease: "easeOut" }}
-              >
-                <motion.div
-                  animate={{ y: [0, -4, 0] }}
-                  transition={{ duration: 3, delay: i * 0.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="flex items-center gap-2"
-                >
-                  <card.icon size={14} className="text-synaptic-mint" aria-hidden="true" />
-                  <span className="text-xs font-medium text-brand-ink dark:text-white">{card.label}</span>
-                </motion.div>
-              </motion.div>
-            ))}
           </motion.div>
         </div>
       </div>
