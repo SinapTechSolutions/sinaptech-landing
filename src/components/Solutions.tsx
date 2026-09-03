@@ -8,7 +8,7 @@ const solutions = [
     icon: Brain,
     title: "IA & Automação",
     description:
-      "IA Local, LLMs, fluxos automatizados e eliminação de tarefas manuais. Transformamos processos repetitivos em intelligent workflows.",
+      "IA Local, LLMs e fluxos automatizados. Transformamos processos repetitivos em fluxos inteligentes.",
     span: "col-span-1 lg:col-span-2 lg:row-span-2",
     gradient: "from-synaptic-mint/10 to-forest-trust/5",
   },
@@ -16,7 +16,7 @@ const solutions = [
     icon: Cloud,
     title: "SaaS B2B",
     description:
-      "Plataformas robustas, alta conversão e infraestrutura em nuvem/híbrida. Escalabilidade que acompanha o crescimento do seu negócio.",
+      "Plataformas robustas, alta conversão e infraestrutura em nuvem. Escalabilidade que acompanha seu crescimento.",
     span: "col-span-1",
     gradient: "from-forest-trust/10 to-brand-snow",
   },
@@ -24,15 +24,15 @@ const solutions = [
     icon: Shield,
     title: "GovTech",
     description:
-      "Soluções para o setor público, focadas em conformidade, licitações, segurança e LGPD. Tecnologia que atende aos mais altos padrões.",
+      "Soluções para o setor público focadas em conformidade, licitações e LGPD. Tecnologia certificada.",
     span: "col-span-1",
     gradient: "from-human-amber/10 to-brand-snow",
   },
   {
     icon: Smartphone,
-    title: "Produtos Sob Demanda",
+    title: "Sob Demanda",
     description:
-      "Web, Mobile, APIs. Engenharia feita sob medida para desafios únicos. Do conceito ao deploy, com precisão e excelência.",
+      "Web, Mobile e APIs. Engenharia feita sob medida para desafios únicos. Do conceito ao deploy.",
     span: "col-span-1 lg:col-span-2",
     gradient: "from-synaptic-mint/5 to-forest-trust/10",
   },
@@ -53,8 +53,7 @@ export default function Solutions() {
             O que construímos
           </h2>
           <p className="mt-4 text-lg text-brand-muted">
-            Desenhamos arquiteturas digitais para impulsionar a operação do seu
-            negócio e do setor público.
+            Arquiteturas digitais para impulsionar a operação do seu negócio e do setor público.
           </p>
         </motion.div>
 
@@ -68,10 +67,10 @@ export default function Solutions() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className={`group relative rounded-xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-8 shadow-sm transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 ${item.span}`}
             >
-              <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+              <div className={`absolute inset-0 rounded-xl bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-3xl`} />
               <div className="relative z-10">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-synaptic-mint/10 text-synaptic-mint mb-4">
-                  <item.icon size={24} />
+                  <item.icon size={24} aria-hidden="true" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-brand-ink dark:text-white">
                   {item.title}

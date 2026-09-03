@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, Send, Loader2 } from "lucide-react";
+import { Mail, Phone, Send, Loader2, CheckCircle } from "lucide-react";
 
 const challengeOptions = [
   "SaaS B2B",
@@ -37,7 +37,7 @@ export default function Contact() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-brand-ink dark:text-white">
-              Pronto para sua próxima evolução?
+              Agende uma demo
             </h2>
             <p className="mt-4 text-lg text-brand-muted">
               Converse com nossa equipe e descubra como podemos transformar sua
@@ -50,7 +50,7 @@ export default function Contact() {
                 className="flex items-center gap-4 text-brand-ink dark:text-white hover:text-synaptic-mint dark:hover:text-synaptic-mint transition-colors duration-200"
               >
                 <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-synaptic-mint/10 text-synaptic-mint">
-                  <Mail size={20} />
+                  <Mail size={20} aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-sm text-brand-muted">E-mail</p>
@@ -65,7 +65,7 @@ export default function Contact() {
                 className="flex items-center gap-4 text-brand-ink dark:text-white hover:text-synaptic-mint dark:hover:text-synaptic-mint transition-colors duration-200"
               >
                 <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-synaptic-mint/10 text-synaptic-mint">
-                  <Phone size={20} />
+                  <Phone size={20} aria-hidden="true" />
                 </div>
                 <div>
                   <p className="text-sm text-brand-muted">WhatsApp</p>
@@ -82,9 +82,13 @@ export default function Contact() {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             {submitted ? (
-              <div className="rounded-xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-8 shadow-sm text-center">
+              <div
+                className="rounded-xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-8 shadow-sm text-center"
+                role="status"
+                aria-live="polite"
+              >
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-synaptic-mint/10 text-synaptic-mint mb-4">
-                  <Send size={28} />
+                  <CheckCircle size={28} aria-hidden="true" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-brand-ink dark:text-white">
                   Conexão estabelecida com sucesso.
@@ -97,12 +101,17 @@ export default function Contact() {
               <form
                 onSubmit={handleSubmit}
                 className="rounded-xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 p-8 shadow-sm space-y-5"
+                aria-label="Formulário de contato"
               >
                 <div>
-                  <label className="block text-sm font-medium text-brand-ink dark:text-white mb-1.5">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-brand-ink dark:text-white mb-1.5"
+                  >
                     Nome
                   </label>
                   <input
+                    id="name"
                     type="text"
                     required
                     className="w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent px-4 py-3 text-sm text-brand-ink dark:text-white placeholder:text-brand-muted focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2 transition-all duration-200"
@@ -111,10 +120,14 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-brand-ink dark:text-white mb-1.5">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-brand-ink dark:text-white mb-1.5"
+                  >
                     E-mail Corporativo
                   </label>
                   <input
+                    id="email"
                     type="email"
                     required
                     className="w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent px-4 py-3 text-sm text-brand-ink dark:text-white placeholder:text-brand-muted focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2 transition-all duration-200"
@@ -123,28 +136,20 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-brand-ink dark:text-white mb-1.5">
-                    Empresa
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    className="w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent px-4 py-3 text-sm text-brand-ink dark:text-white placeholder:text-brand-muted focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2 transition-all duration-200"
-                    placeholder="Nome da empresa"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-brand-ink dark:text-white mb-1.5">
+                  <label
+                    htmlFor="challenge"
+                    className="block text-sm font-medium text-brand-ink dark:text-white mb-1.5"
+                  >
                     Qual o seu desafio?
                   </label>
                   <select
+                    id="challenge"
                     required
-                    className="w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent px-4 py-3 text-sm text-brand-ink dark:text-white focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2 transition-all duration-200"
+                    className="w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 text-sm text-brand-ink dark:text-white focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2 transition-all duration-200"
                   >
-                    <option value="">Selecione...</option>
+                    <option value="" className="bg-white dark:bg-slate-800 text-brand-ink dark:text-white">Selecione...</option>
                     {challengeOptions.map((opt) => (
-                      <option key={opt} value={opt}>
+                      <option key={opt} value={opt} className="bg-white dark:bg-slate-800 text-brand-ink dark:text-white">
                         {opt}
                       </option>
                     ))}
@@ -154,17 +159,18 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={loading}
+                  aria-busy={loading}
                   className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-forest-trust px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-forest-trust-light hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 >
                   {loading ? (
                     <>
-                      <Loader2 size={16} className="animate-spin" />
+                      <Loader2 size={16} className="animate-spin" aria-hidden="true" />
                       Sincronizando sinapses...
                     </>
                   ) : (
                     <>
-                      Iniciar Conversa
-                      <Send size={16} />
+                      Agende uma demo
+                      <Send size={16} aria-hidden="true" />
                     </>
                   )}
                 </button>
