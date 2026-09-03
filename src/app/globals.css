@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-brand-snow: #FAFBFC;
+  --color-brand-ink: #111827;
+  --color-brand-muted: #6B7280;
+  --color-forest-trust: #047857;
+  --color-forest-trust-light: #059669;
+  --color-synaptic-mint: #059669;
+  --color-synaptic-mint-light: #10B981;
+  --color-human-amber: #D97706;
+}
+
+.dark {
+  --color-brand-snow: #0B1120;
+  --color-brand-ink: #F8FAFC;
+  --color-brand-muted: #94A3B8;
+  --color-forest-trust: #10B981;
+  --color-forest-trust-light: #34D399;
+  --color-synaptic-mint: #34D399;
+  --color-synaptic-mint-light: #6EE7B7;
+  --color-human-amber: #FBBF24;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand-snow: var(--color-brand-snow);
+  --color-brand-ink: var(--color-brand-ink);
+  --color-brand-muted: var(--color-brand-muted);
+  --color-forest-trust: var(--color-forest-trust);
+  --color-forest-trust-light: var(--color-forest-trust-light);
+  --color-synaptic-mint: var(--color-synaptic-mint);
+  --color-synaptic-mint-light: var(--color-synaptic-mint-light);
+  --color-human-amber: var(--color-human-amber);
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-sans: "Inter", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-brand-snow);
+  color: var(--color-brand-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-synaptic-mint);
+  color: white;
 }
