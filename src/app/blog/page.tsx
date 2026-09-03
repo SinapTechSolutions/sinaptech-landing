@@ -1,16 +1,14 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { getSortedPostsData } from "@/lib/blog";
+import { getPosts } from "@/lib/blog";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Blog | SINAPTECH",
   description:
     "Artigos sobre IA Local, GovTech, SaaS B2B e engenharia de software premium.",
-  openGraph: {
-    title: "Blog SINAPTECH",
-    description: "Insights sobre IA Local, GovTech e SaaS B2B.",
-  },
 };
 
 function formatDate(date: string): string {
@@ -21,8 +19,13 @@ function formatDate(date: string): string {
   }).format(new Date(date));
 }
 
-export default function BlogPage() {
-  const posts = getSortedPostsData();
+export default async function BlogPage() {
+  let posts = [];
+  try {
+    posts = await getPosts();
+  } catch {
+    // API offline, mostrar vazio
+  }
 
   return (
     <div className="min-h-screen bg-brand-snow dark:bg-slate-950">
@@ -44,7 +47,7 @@ export default function BlogPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => (
               <article
-                key={post.slug}
+                key={post.id}
                 className="group relative rounded-xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
               >
                 {post.coverImage && (
@@ -60,7 +63,7 @@ export default function BlogPage() {
                   <div className="flex items-center gap-3 text-xs text-brand-muted mb-3">
                     <span className="flex items-center gap-1">
                       <Calendar size={12} aria-hidden="true" />
-                      {formatDate(post.date)}
+                      {formatDate(post.publishedAt || post.createdAt)}
                     </span>
                     <span className="flex items-center gap-1">
                       <Clock size={12} aria-hidden="true" />
@@ -72,9 +75,11 @@ export default function BlogPage() {
                       {post.title}
                     </h2>
                   </Link>
-                  <p className="mt-2 text-sm text-brand-muted line-clamp-2">
-                    {post.excerpt}
-                  </p>
+                  {post.excerpt && (
+                    <p className="mt-2 text-sm text-brand-muted line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  )}
                   {post.tags && post.tags.length > 0 && (
                     <div className="mt-4 flex flex-wrap gap-2">
                       {post.tags.slice(0, 3).map((tag) => (
