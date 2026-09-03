@@ -16,6 +16,7 @@ const navLinks: NavItem[] = [
   { label: "Soluções", href: "#solucoes" },
   { label: "A Sinapse", href: "#sinapse" },
   { label: "Sobre Nós", href: "#dna" },
+  { label: "Blog", href: "/blog" },
   { label: "Contato", href: "#contato" },
 ];
 
