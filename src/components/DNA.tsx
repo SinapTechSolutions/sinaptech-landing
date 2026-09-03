@@ -6,21 +6,21 @@ import { Target, Users, Zap } from "lucide-react";
 const values = [
   {
     icon: Target,
-    title: "Missão",
+    title: "Por que existimos",
     description:
-      "Construir a ponte entre a capacidade humana e a precisão da IA para o mercado B2B e governamental.",
+      "Governos e empresas perdem meses com sistemas que não funcionam. Nós existimos para acabar com isso — com tecnologia que funciona na primeira vez.",
   },
   {
     icon: Users,
-    title: "Manifesto",
+    title: "Como trabalhamos",
     description:
-      "Somos engenheiros focados em impacto. A IA é nossa aliada colaborativa, garantindo entregas mais rápidas e seguras.",
+      "Cada membro da equipe é engenheiro, não vendedor. Sua demanda fala diretamente com quem vai construir. Isso garante que nada se perca no caminho.",
   },
   {
     icon: Zap,
-    title: "Visão",
+    title: "Onde queremos chegar",
     description:
-      "Ser referência em engenharia premium no Brasil, onde tecnologia e inteligência humana convergem.",
+      "Ser a Software House mais confiável do Brasil. Não pelo tamanho, mas pela qualidade que nossos clientes sentem em cada interação.",
   },
 ];
 
@@ -36,10 +36,10 @@ export default function DNA() {
           className="text-center max-w-2xl mx-auto"
         >
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-brand-ink dark:text-white">
-            Nosso DNA
+            Por que empresas escolhem a SINAPTECH
           </h2>
           <p className="mt-4 text-lg text-brand-muted">
-            Os pilares que definem nossa abordagem única de engenharia.
+            Não somos mais uma Software House. Somos a que seus concorrentes temem.
           </p>
         </motion.div>
 

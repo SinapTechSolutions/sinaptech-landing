@@ -44,7 +44,7 @@ export default function Footer() {
               SINAPTECH
             </Link>
             <p className="mt-3 text-sm text-brand-muted leading-relaxed">
-              Software House Premium especializada em IA Local e soluções GovTech.
+              Software House Premium especializada em IA Local e GovTech. +10 empresas confiam na nossa engenharia.
             </p>
           </div>
 
@@ -71,8 +71,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-gray-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-brand-muted">
-            SINAPTECH &copy; {new Date().getFullYear()}. A inteligência em
-            conformidade.
+            SINAPTECH &copy; {new Date().getFullYear()}. Tecnologia que protege e escala.
           </p>
           <div className="flex items-center gap-4">
             <span

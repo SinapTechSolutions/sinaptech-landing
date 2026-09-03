@@ -7,30 +7,30 @@ const steps = [
   {
     icon: Search,
     number: "01",
-    title: "Diagnóstico",
+    title: "Diagnóstico Gratuito",
     description:
-      "Mapeamento profundo do negócio, análise de dados e identificação de gargalos.",
+      "Mapeamos seus processos e identificamos exatamente onde a IA pode gerar economia. Sem compromisso.",
   },
   {
     icon: Layers,
     number: "02",
-    title: "Arquitetura",
+    title: "Arquitetura Sob Medida",
     description:
-      "Desenho estrutural, escolha de stack e aprovação de protótipos.",
+      "Desenhamos a solução ideal para o seu caso. Você aprova antes de qualquer linha de código.",
   },
   {
     icon: Code2,
     number: "03",
-    title: "Desenvolvimento",
+    title: "Desenvolvimento Transparente",
     description:
-      "Engenharia de precisão guiada por inteligência colaborativa.",
+      "Acompanhe cada etapa em tempo real. Sprints semanais com entregas concretas.",
   },
   {
     icon: Rocket,
     number: "04",
-    title: "Evolução",
+    title: "Evolução Garantida",
     description:
-      "Deploy contínuo, monitoramento e otimização de performance.",
+      "Deploy seguro + 90 dias de suporte. Monitoramos a performance para garantir resultados.",
   },
 ];
 
@@ -46,10 +46,10 @@ export default function Sinapse() {
           className="text-center max-w-2xl mx-auto"
         >
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-brand-ink dark:text-white">
-            O Ciclo Sináptico
+            Seu projeto em 4 passos simples
           </h2>
           <p className="mt-4 text-lg text-brand-muted">
-            Nosso framework de engenharia. Do diagnóstico à escala, passo a passo.
+            Processo testado em +10 projetos. Sem surpresas, sem atrasos, sem custos ocultos.
           </p>
         </motion.div>
 

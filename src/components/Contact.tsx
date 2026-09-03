@@ -37,11 +37,11 @@ export default function Contact() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-brand-ink dark:text-white">
-              Agende uma demo
+              Comece com uma conversa gratuita
             </h2>
             <p className="mt-4 text-lg text-brand-muted">
-              Converse com nossa equipe e descubra como podemos transformar sua
-              visão em tecnologia de alto impacto.
+              Sem compromisso. Em 30 minutos, vamos mapear onde a IA pode gerar 
+              <strong> economia real</strong> na sua operação.
             </p>
 
             <div className="mt-10 space-y-6">
@@ -91,10 +91,10 @@ export default function Contact() {
                   <CheckCircle size={28} aria-hidden="true" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-brand-ink dark:text-white">
-                  Conexão estabelecida com sucesso.
+                  Sua análise foi enviada com sucesso!
                 </h3>
                 <p className="mt-2 text-brand-muted">
-                  Entraremos em contato em breve.
+                  Nossa equipe entrará em contato em até 24 horas úteis.
                 </p>
               </div>
             ) : (
@@ -108,14 +108,14 @@ export default function Contact() {
                     htmlFor="name"
                     className="block text-sm font-medium text-brand-ink dark:text-white mb-1.5"
                   >
-                    Nome
+                    Seu nome completo
                   </label>
                   <input
                     id="name"
                     type="text"
                     required
                     className="w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent px-4 py-3 text-sm text-brand-ink dark:text-white placeholder:text-brand-muted focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2 transition-all duration-200"
-                    placeholder="Seu nome completo"
+                    placeholder="Como podemos te chamar?"
                   />
                 </div>
 
@@ -124,14 +124,14 @@ export default function Contact() {
                     htmlFor="email"
                     className="block text-sm font-medium text-brand-ink dark:text-white mb-1.5"
                   >
-                    E-mail Corporativo
+                    E-mail corporativo
                   </label>
                   <input
                     id="email"
                     type="email"
                     required
                     className="w-full rounded-xl border border-gray-200 dark:border-slate-700 bg-transparent px-4 py-3 text-sm text-brand-ink dark:text-white placeholder:text-brand-muted focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2 transition-all duration-200"
-                    placeholder="voce@empresa.com.br"
+                    placeholder="seu@empresa.com.br"
                   />
                 </div>
 
@@ -140,7 +140,7 @@ export default function Contact() {
                     htmlFor="challenge"
                     className="block text-sm font-medium text-brand-ink dark:text-white mb-1.5"
                   >
-                    Qual o seu desafio?
+                    Qual seu maior desafio?
                   </label>
                   <select
                     id="challenge"
@@ -165,11 +165,11 @@ export default function Contact() {
                   {loading ? (
                     <>
                       <Loader2 size={16} className="animate-spin" aria-hidden="true" />
-                      Sincronizando sinapses...
+                      Processando sua solicitação...
                     </>
                   ) : (
                     <>
-                      Agende uma demo
+                      Garantir minha análise gratuita
                       <Send size={16} aria-hidden="true" />
                     </>
                   )}

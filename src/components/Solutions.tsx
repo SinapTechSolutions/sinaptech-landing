@@ -6,33 +6,33 @@ import { Brain, Cloud, Shield, Smartphone } from "lucide-react";
 const solutions = [
   {
     icon: Brain,
-    title: "IA & Automação",
+    title: "IA que Protege seus Dados",
     description:
-      "IA Local, LLMs e fluxos automatizados. Transformamos processos repetitivos em fluxos inteligentes.",
+      "IA 100% local que nunca envia seus dados para a nuvem. Automatize processos repetitivos e reduza custos operacionais em até 60% — sem riscos de vazamento.",
     span: "col-span-1 lg:col-span-2 lg:row-span-2",
     gradient: "from-synaptic-mint/10 to-forest-trust/5",
   },
   {
     icon: Cloud,
-    title: "SaaS B2B",
+    title: "SaaS que Converte",
     description:
-      "Plataformas robustas, alta conversão e infraestrutura em nuvem. Escalabilidade que acompanha seu crescimento.",
+      "Plataformas que transformam visitantes em clientes. Arquitetura robusta que suporta 10x mais usuários sem quedas de performance.",
     span: "col-span-1",
     gradient: "from-forest-trust/10 to-brand-snow",
   },
   {
     icon: Shield,
-    title: "GovTech",
+    title: "GovTech Certificado",
     description:
-      "Soluções para o setor público focadas em conformidade, licitações e LGPD. Tecnologia certificada.",
+      "Soluções que atendem 100% dos requisitos de licitação e LGPD. Tecnologia aprovada em órgãos públicos de todos os portes.",
     span: "col-span-1",
     gradient: "from-human-amber/10 to-brand-snow",
   },
   {
     icon: Smartphone,
-    title: "Sob Demanda",
+    title: "Sob Demanda, Sem Surpresas",
     description:
-      "Web, Mobile e APIs. Engenharia feita sob medida para desafios únicos. Do conceito ao deploy.",
+      "Web, Mobile e APIs desenvolvidas com escopo fechado e prazo garantido. Do conceito ao deploy em semanas, não meses.",
     span: "col-span-1 lg:col-span-2",
     gradient: "from-synaptic-mint/5 to-forest-trust/10",
   },
@@ -50,10 +50,10 @@ export default function Solutions() {
           className="text-center max-w-2xl mx-auto"
         >
           <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-brand-ink dark:text-white">
-            O que construímos
+            Soluções que geram resultado real
           </h2>
           <p className="mt-4 text-lg text-brand-muted">
-            Arquiteturas digitais para impulsionar a operação do seu negócio e do setor público.
+            Cada projeto é construído para resolver problemas específicos — com tecnologia que você controla.
           </p>
         </motion.div>
 

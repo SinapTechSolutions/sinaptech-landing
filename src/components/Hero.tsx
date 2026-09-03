@@ -41,7 +41,7 @@ export default function Hero() {
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
               <span className="inline-flex items-center rounded-full bg-synaptic-mint/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-synaptic-mint uppercase">
-                Soluções Premium para GovTech e Empresas
+                +10 empresas já confiam na SINAPTECH
               </span>
             </motion.div>
 
@@ -51,9 +51,9 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
               className="mt-8 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-950 dark:text-white"
             >
-              A sinapse perfeita{" "}
-              <span className="text-forest-trust">entre visão humana</span>{" "}
-              <span className="text-synaptic-mint">e inteligência artificial</span>.
+              Sua empresa merece{" "}
+              <span className="text-forest-trust">tecnologia que protege</span>{" "}
+              <span className="text-synaptic-mint">e escala com segurança</span>.
             </motion.h1>
 
             <motion.p
@@ -62,9 +62,9 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
               className="mt-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed"
             >
-              Criamos softwares, SaaS e soluções GovTech que unem engenharia e IA
-              para transformar problemas complexos em tecnologia que funciona.
-              Não adaptamos negócios à tecnologia. Criamos a tecnologia que os faz avançar.
+              Desenvolvemos softwares sob medida com <strong>IA local que nunca sai do seu servidor</strong>. 
+              Enquanto seus concorrentes se arriscam com soluções genéricas, nós criamos a tecnologia que 
+              <strong>-transforma seus processos em vantagem competitiva real</strong>.
             </motion.p>
 
             <motion.div
@@ -77,14 +77,14 @@ export default function Hero() {
                 href="#contato"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-forest-trust px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-forest-trust-light hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2 w-full sm:w-auto"
               >
-                Agende uma demo
+                Garantir minha demo gratuita
                 <ArrowRight size={16} aria-hidden="true" />
               </a>
               <a
                 href="#solucoes"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-brand-ink/15 dark:border-white/15 px-7 py-3.5 text-sm font-semibold text-brand-ink dark:text-white transition-all duration-300 ease-out hover:border-brand-ink/30 dark:hover:border-white/30 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2 w-full sm:w-auto"
               >
-                Nossas Soluções
+                Ver como funciona
               </a>
             </motion.div>
           </div>
