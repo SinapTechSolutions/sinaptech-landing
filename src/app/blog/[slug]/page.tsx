@@ -93,7 +93,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="flex items-center gap-4 text-sm text-brand-muted mb-6">
           <span className="flex items-center gap-1.5">
             <User size={14} aria-hidden="true" />
-            {post.author.name || "SINAPTECH"}
+            SINAPTECH
           </span>
           <span className="flex items-center gap-1.5">
             <Calendar size={14} aria-hidden="true" />

@@ -1,3 +1,5 @@
+import { contentfulClient } from "./contentful";
+
 export interface Post {
   id: string;
   title: string;
@@ -5,36 +7,60 @@ export interface Post {
   excerpt: string | null;
   content: string;
   coverImage: string | null;
-  published: boolean;
-  author: { name: string | null; email: string };
   tags: string[];
-  createdAt: string;
-  updatedAt: string;
   publishedAt: string | null;
+  createdAt: string;
 }
 
-const API_BASE = process.env.FLUX_API_URL || "https://twelve-cups-smile.loca.lt";
+interface ContentfulPost {
+  sys: { id: string; createdAt: string; updatedAt: string };
+  fields: {
+    title: string;
+    slug: string;
+    excerpt?: string;
+    content: string;
+    coverImage?: { fields: { file: { url: string } } };
+    tags?: string[];
+    publishedAt?: string;
+  };
+}
 
-async function fetchApi<T>(path: string): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, {
-    next: { revalidate: 60 },
-  });
-
-  if (!res.ok) {
-    throw new Error(`API error: ${res.status}`);
-  }
-
-  return res.json();
+function formatPost(entry: ContentfulPost): Post {
+  const fields = entry.fields;
+  return {
+    id: entry.sys.id,
+    title: fields.title,
+    slug: fields.slug,
+    excerpt: fields.excerpt || null,
+    content: fields.content,
+    coverImage: fields.coverImage
+      ? `https:${fields.coverImage.fields.file.url}`
+      : null,
+    tags: fields.tags || [],
+    publishedAt: fields.publishedAt || null,
+    createdAt: entry.sys.createdAt,
+  };
 }
 
 export async function getPosts(): Promise<Post[]> {
-  return fetchApi<Post[]>("/api/blog");
+  const entries = await contentfulClient.getEntries<ContentfulPost>({
+    content_type: "blogPost",
+    order: ["-fields.publishedAt"],
+  });
+
+  return entries.items.map(formatPost);
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
-  try {
-    return await fetchApi<Post>(`/api/blog/${slug}`);
-  } catch {
+  const entries = await contentfulClient.getEntries<ContentfulPost>({
+    content_type: "blogPost",
+    "fields.slug": slug,
+    limit: 1,
+  });
+
+  if (entries.items.length === 0) {
     return null;
   }
+
+  return formatPost(entries.items[0]);
 }
