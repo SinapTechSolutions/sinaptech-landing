@@ -1,170 +1,115 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-
-const nodes = [
-  { id: 1, x: 40, y: 25 },
-  { id: 2, x: 100, y: 50 },
-  { id: 3, x: 60, y: 90 },
-  { id: 4, x: 140, y: 80 },
-  { id: 5, x: 180, y: 35 },
-  { id: 6, x: 120, y: 130 },
-  { id: 7, x: 200, y: 110 },
-  { id: 8, x: 50, y: 150 },
-  { id: 9, x: 220, y: 65 },
-  { id: 10, x: 160, y: 160 },
-  { id: 11, x: 90, y: 170 },
-  { id: 12, x: 240, y: 140 },
-];
-
-const edges = [
-  [1, 2], [1, 3], [2, 4], [2, 5], [3, 6], [3, 8],
-  [4, 7], [4, 9], [5, 9], [6, 7], [6, 10], [7, 12],
-  [8, 11], [10, 11], [10, 12], [11, 8],
-];
+import { ArrowRight, ChevronRight } from "lucide-react";
+import SynapseVisual from "@/components/SynapseVisual";
 
 export default function Hero() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-synaptic-mint/15 rounded-full blur-3xl" aria-hidden="true" />
-        <div className="absolute bottom-1/3 right-1/3 w-64 h-64 bg-forest-trust/10 rounded-full blur-3xl" aria-hidden="true" />
+    <section
+      id="hero"
+      className="relative scroll-mt-24 overflow-hidden pb-20 pt-32 sm:pt-36 lg:pb-28 lg:pt-44"
+    >
+      <div className="absolute inset-0 -z-10" aria-hidden="true">
+        <div className="absolute left-1/2 top-0 h-px w-full bg-gradient-to-r from-transparent via-synaptic-mint/30 to-transparent" />
+        <div className="absolute -right-32 top-24 h-96 w-96 rounded-full bg-synaptic-mint/10 blur-3xl" />
+        <div className="absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-forest-trust/10 blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="max-w-2xl">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <span className="inline-flex items-center rounded-full bg-synaptic-mint/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-synaptic-mint uppercase">
-                +10 empresas já confiam na SINAPTECH
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-synaptic-mint/30 bg-synaptic-mint/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-forest-trust dark:text-synaptic-mint">
+                <span className="relative flex h-2 w-2" aria-hidden="true">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-70" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                </span>
+                Tecnologia que entrega. Resultados que transformam.
               </span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-              className="mt-8 font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-gray-950 dark:text-white"
+              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+              className="mt-6 font-display text-4xl font-extrabold tracking-tight text-brand-ink md:text-5xl lg:text-6xl dark:text-slate-50"
             >
-              Sua empresa merece{" "}
-              <span className="text-forest-trust">tecnologia que protege</span>{" "}
-              <span className="text-synaptic-mint">e escala com segurança</span>.
+              A sinapse perfeita entre{" "}
+              <span className="text-brand-ink dark:text-synaptic-mint">
+                visão humana
+              </span>{" "}
+              e{" "}
+              <span className="text-brand-ink dark:text-synaptic-mint">
+                inteligência artificial
+              </span>
+              .
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="mt-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed"
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="mt-6 max-w-2xl text-lg leading-relaxed text-brand-muted"
             >
-              Desenvolvemos softwares sob medida com <strong>IA local que nunca sai do seu servidor</strong>. 
-              Enquanto seus concorrentes se arriscam com soluções genéricas, nós criamos a tecnologia que 
-              <strong>-transforma seus processos em vantagem competitiva real</strong>.
+              Do problema complexo ao resultado extraordinário, unimos visão de
+              negócios, engenharia de software e inteligência artificial para
+              transformar desafios em SaaS, aplicativos e ecossistemas GovTech
+              que simplificam operações, aceleram decisões e geram vantagem
+              competitiva.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-              className="mt-10 flex flex-col sm:flex-row items-start gap-4"
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="mt-10 flex flex-col gap-4 sm:flex-row"
             >
               <a
                 href="#contato"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-forest-trust px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 ease-out hover:bg-forest-trust-light hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2 w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#065F46] px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-emerald-800 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950"
               >
-                Garantir minha demo gratuita
+                Vamos Construir
                 <ArrowRight size={16} aria-hidden="true" />
               </a>
               <a
                 href="#solucoes"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-brand-ink/15 dark:border-white/15 px-7 py-3.5 text-sm font-semibold text-brand-ink dark:text-white transition-all duration-300 ease-out hover:border-brand-ink/30 dark:hover:border-white/30 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2 w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200/50 bg-white px-7 py-3.5 text-sm font-semibold text-brand-ink shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-50 dark:shadow-none dark:hover:border-slate-700 dark:focus-visible:ring-offset-slate-950"
               >
-                Ver como funciona
+                Explorar Soluções
+                <ChevronRight size={16} aria-hidden="true" />
               </a>
             </motion.div>
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="hidden lg:flex items-center justify-center relative"
-            aria-hidden="true"
+            transition={{ duration: 0.8, delay: 0.25, ease: "easeOut" }}
+            className="lg:col-span-5"
           >
-            <div className="absolute inset-0 bg-synaptic-mint/20 rounded-full blur-3xl" />
-
-            <svg viewBox="0 0 280 200" className="w-full h-auto relative z-10">
-              <defs>
-                <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#10B981" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#065F46" stopOpacity="0.3" />
-                </linearGradient>
-                <filter id="nodeGlow">
-                  <feGaussianBlur stdDeviation="2" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              <g>
-                {edges.map(([fromId, toId], i) => {
-                  const from = nodes.find((n) => n.id === fromId)!;
-                  const to = nodes.find((n) => n.id === toId)!;
-                  return (
-                    <motion.line
-                      key={`e-${i}`}
-                      x1={from.x} y1={from.y} x2={to.x} y2={to.y}
-                      stroke="url(#edgeGrad)" strokeWidth="1.5" strokeLinecap="round"
-                      initial={{ pathLength: 0, opacity: 0 }}
-                      animate={{ pathLength: 1, opacity: 1 }}
-                      transition={{ duration: 1.2, delay: i * 0.06, ease: "easeInOut" }}
-                    />
-                  );
-                })}
-              </g>
-
-              <g>
-                {edges.map(([fromId, toId], i) => {
-                  const from = nodes.find((n) => n.id === fromId)!;
-                  const to = nodes.find((n) => n.id === toId)!;
-                  return (
-                    <motion.circle
-                      key={`p-${i}`} r="2.5" fill="#10B981" filter="url(#nodeGlow)"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: [0, 1, 1, 0], cx: [from.x, to.x], cy: [from.y, to.y] }}
-                      transition={{ duration: 1.8, delay: 1.2 + i * 0.15, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }}
-                    />
-                  );
-                })}
-              </g>
-
-              <g>
-                {nodes.map((node, i) => (
-                  <motion.g key={node.id}>
-                    <motion.circle
-                      cx={node.x} cy={node.y} r="5"
-                      fill="#065F46" stroke="#10B981" strokeWidth="1.5"
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.4, delay: i * 0.05, ease: "easeOut" }}
-                    />
-                    <motion.circle
-                      cx={node.x} cy={node.y} r="9"
-                      fill="none" stroke="#10B981" strokeWidth="0.8"
-                      animate={{ opacity: [0.15, 0.4, 0.15] }}
-                      transition={{ duration: 2.5, delay: i * 0.12, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                  </motion.g>
-                ))}
-              </g>
-            </svg>
+            <div className="relative mx-auto flex w-full max-w-md items-center justify-center lg:max-w-none">
+              <div
+                className="bg-radial-mint absolute inset-0 rounded-full"
+                aria-hidden="true"
+              />
+              <div
+                className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_72%)] dark:bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)]"
+                aria-hidden="true"
+              />
+              <div className="relative w-full px-2 py-8 sm:px-6">
+                <SynapseVisual />
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

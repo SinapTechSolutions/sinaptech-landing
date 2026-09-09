@@ -88,7 +88,7 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${inter.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen bg-brand-snow text-brand-ink font-sans">
+      <body className="min-h-screen bg-slate-50 font-sans text-slate-900 antialiased dark:bg-[#0B1120] dark:text-slate-50">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

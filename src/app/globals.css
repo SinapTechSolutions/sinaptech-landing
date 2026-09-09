@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --color-brand-snow: #FAFBFC;
-  --color-brand-ink: #111827;
-  --color-brand-muted: #6B7280;
-  --color-forest-trust: #047857;
-  --color-forest-trust-light: #059669;
-  --color-synaptic-mint: #059669;
-  --color-synaptic-mint-light: #10B981;
-  --color-human-amber: #D97706;
+  --color-brand-snow: #F8FAFC;
+  --color-brand-ink: #0F172A;
+  --color-brand-muted: #475569;
+  --color-forest-trust: #065F46;
+  --color-forest-trust-light: #047857;
+  --color-synaptic-mint: #10B981;
+  --color-synaptic-mint-light: #34D399;
+  --color-human-amber: #F59E0B;
 }
 
 .dark {
   --color-brand-snow: #0B1120;
   --color-brand-ink: #F8FAFC;
   --color-brand-muted: #94A3B8;
-  --color-forest-trust: #10B981;
-  --color-forest-trust-light: #34D399;
-  --color-synaptic-mint: #34D399;
-  --color-synaptic-mint-light: #6EE7B7;
-  --color-human-amber: #FBBF24;
+  --color-forest-trust: #065F46;
+  --color-forest-trust-light: #047857;
+  --color-synaptic-mint: #10B981;
+  --color-synaptic-mint-light: #34D399;
+  --color-human-amber: #F59E0B;
 }
 
 @theme inline {
@@ -33,6 +33,23 @@
   --color-human-amber: var(--color-human-amber);
   --font-display: "Plus Jakarta Sans", sans-serif;
   --font-sans: "Inter", sans-serif;
+}
+
+@utility bg-radial-mint {
+  background: radial-gradient(
+    circle at center,
+    rgba(16, 185, 129, 0.12) 0%,
+    rgba(16, 185, 129, 0.04) 45%,
+    transparent 70%
+  );
+}
+
+@utility bg-radial-forest {
+  background: radial-gradient(
+    circle at center,
+    rgba(6, 95, 70, 0.1) 0%,
+    transparent 70%
+  );
 }
 
 html {
