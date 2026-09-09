@@ -44,14 +44,21 @@ src/
 ├── components/
 │   ├── Navbar.tsx          # Navbar sticky com glassmorphism + theme toggle
 │   ├── Hero.tsx            # Split-screen com animação de sinapse SVG
+│   ├── TrustBadges.tsx     # Badges de conformidade (LGPD, Licitações)
 │   ├── Solutions.tsx       # Bento Grid de soluções
+│   ├── SolutionModal.tsx   # Modal de detalhes de cada solução
 │   ├── Sinapse.tsx         # Timeline do Ciclo Sináptico
+│   ├── SynapseVisual.tsx   # Animação SVG de rede neural
+│   ├── Products.tsx        # Carrossel de produtos proprietários
+│   ├── ROICalculator.tsx   # Simulador de impacto operacional
 │   ├── DNA.tsx             # Missão, Manifesto, Visão
+│   ├── FAQ.tsx             # Perguntas frequentes (accordion)
 │   ├── Contact.tsx         # Formulário + info de contato
+│   ├── ThemeToggle.tsx     # Toggle light/dark (detecção automática)
 │   └── Footer.tsx          # Footer com links e badges
 public/
-├── gemini-svg.svg          # Logo SINAPTECH (rede neural SVG)
-└── favicon.ico             # Favicon (atualizar para SVG)
+├── sinaptech-icon.svg      # Logo SINAPTECH (rede neural SVG)
+└── favicon.ico             # Favicon
 ```
 
 ## Design Tokens (CSS Variables)
@@ -99,3 +106,7 @@ npm run build && npx wrangler pages deploy out --project-name=sinaptech-landing 
 1. Merge de `dev` → `master`
 2. Rode `npm run build` para gerar a build estática
 3. Deploy com `npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production`
+
+### Regra Obrigatória
+
+> **Sempre que houver mudança significativa (novo componente, correção de bug, update de dependência), atualizar o fluxo de produção:** build + deploy + commit do status atualizado.

@@ -24,11 +24,39 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 |---|---|
 | Navbar | Sticky com glassmorphism, theme toggle e CTA |
 | Hero | Split-screen com animação de sinapse SVG + cards flutuantes |
+| TrustBadges | Badges de conformidade (LGPD, Licitações, Segurança) |
 | Solutions | Bento Grid de soluções (IA, SaaS, GovTech, Sob Demanda) |
+| SolutionModal | Modal de detalhes de cada solução |
 | Sinapse | Timeline do Ciclo Sináptico (4 etapas) |
+| SynapseVisual | Animação SVG de rede neural |
+| Products | Carrossel de produtos proprietários (Tatame Squad) |
+| ROICalculator | Simulador de impacto operacional por segmento |
 | DNA | Missão, Manifesto, Visão |
+| FAQ | Perguntas frequentes com accordion |
 | Contact | Formulário + info de contato (email, WhatsApp) |
-| Footer | Footer com links e badges LGPD/SOC 2 |
+| ThemeToggle | Toggle light/dark com detecção automática do sistema |
+| Footer | Footer com links e badges LGPD/Licitações |
+
+## Fluxo de Trabalho
+
+| Branch | Uso |
+|--------|-----|
+| `dev` | Desenvolvimento, features, fixes |
+| `master` | Deploy em produção |
+
+### Desenvolvimento
+
+1. Trabalhe na branch `dev`
+2. Edite os componentes em `src/components/`
+3. Teste localmente com `npm run dev`
+4. Rode `npm run lint` para verificar erros
+5. Commit e push para `dev`
+
+### Deploy em Produção
+
+1. Merge de `dev` → `master`
+2. Rode `npm run build` para gerar a build estática
+3. Deploy com `npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production`
 
 ## Deploy
 
