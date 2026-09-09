@@ -15,6 +15,7 @@ const navLinks: NavItem[] = [
   { label: "Soluções", href: "#solucoes" },
   { label: "Produtos", href: "#produtos" },
   { label: "Metodologia", href: "#ciclo" },
+  { label: "Depoimentos", href: "#depoimentos" },
   { label: "Essência", href: "#dna" },
   { label: "FAQ", href: "#faq" },
   { label: "Contato", href: "#contato" },

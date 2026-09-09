@@ -91,7 +91,7 @@ export default function Contact() {
     setErrors((prev) => ({ ...prev, email: emailError ?? undefined }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const nextErrors: ContactFormErrors = {};
@@ -111,10 +111,29 @@ export default function Contact() {
     if (Object.values(nextErrors).some(Boolean)) return;
 
     setLoading(true);
-    window.setTimeout(() => {
-      setLoading(false);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        if (data.errors) {
+          setErrors(data.errors);
+        }
+        return;
+      }
+
       setSubmitted(true);
-    }, 1800);
+    } catch {
+      setErrors({ email: "Erro de conexão. Tente novamente." });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClasses = (hasError: boolean) =>
