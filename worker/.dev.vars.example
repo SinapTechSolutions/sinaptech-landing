@@ -1,0 +1,4 @@
+# Local Docker: postgresql://sinaptech:<URL-encoded-password>@127.0.0.1:5432/sinaptech_landing
+# Production: pooled Neon URL, installed with wrangler secret put DATABASE_URL.
+DATABASE_URL=
+TURNSTILE_SECRET_KEY=

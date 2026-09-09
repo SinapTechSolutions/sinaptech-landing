@@ -4,10 +4,10 @@ services:
     container_name: sinaptech-postgres
     restart: unless-stopped
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     environment:
       POSTGRES_USER: sinaptech
-      POSTGRES_PASSWORD: sinaptech2026
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in an untracked .env file}
       POSTGRES_DB: sinaptech_landing
     volumes:
       - pgdata:/var/lib/postgresql/data

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 interface NewsletterPayload {
   email: string;
@@ -16,10 +17,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // TODO: integrar com Resend, Mailchimp, ConvertKit, etc.
-    console.log("[Newsletter]", {
-      email,
-      timestamp: new Date().toISOString(),
+    await prisma.newsletter.upsert({
+      where: { email: email.toLowerCase() },
+      update: {},
+      create: { email: email.toLowerCase() },
     });
 
     return NextResponse.json({ ok: true }, { status: 200 });

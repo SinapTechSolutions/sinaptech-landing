@@ -9,6 +9,7 @@ Landing page corporativa da SINAPTECH - Software House Premium especializada em 
 - next-themes (Light/Dark Mode)
 - Lucide React (Ícones)
 - TypeScript
+- Prisma + Neon Postgres
 
 ## Getting Started
 
@@ -55,7 +56,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ### Deploy em Produção
 
 1. Rode `npm run build` para gerar a build estática
-2. Deploy com `npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production`
+2. Push para `dev` — o Vercel faz deploy automaticamente
 
 ### Sincronizar com Master
 
@@ -64,16 +65,16 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deploy
 
-### Cloudflare Pages
+### Vercel
 
-- **URL Fixa:** https://production.sinaptech-landing.pages.dev
-- **Projeto:** sinaptech-landing
+- **URL:** https://sinaptech-landing.vercel.app
+- **Banco:** Neon Postgres (plano gratuito)
 
-### Atualizar Deploy
+### Configuração
 
-```bash
-npm run build && npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production
-```
+1. Conecte o repositório GitHub ao Vercel
+2. Adicione a variável `DATABASE_URL` no painel do Vercel
+3. O deploy é automático a cada push na branch `dev`
 
 ## Learn More
 

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 const FREE_EMAIL_DOMAINS = [
   "gmail.com",
@@ -62,13 +63,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, errors }, { status: 422 });
     }
 
-    // TODO: integrar com banco de dados, Resend, Zapier, etc.
-    // Por agora apenas logamos no servidor
-    console.log("[Contact]", {
-      name: body.name,
-      email: body.email,
-      need: body.need,
-      timestamp: new Date().toISOString(),
+    await prisma.contact.create({
+      data: {
+        name: body.name.trim(),
+        email: body.email.trim().toLowerCase(),
+        need: body.need,
+      },
     });
 
     return NextResponse.json({ ok: true }, { status: 200 });
