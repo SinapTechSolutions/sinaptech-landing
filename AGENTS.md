@@ -22,6 +22,7 @@ Stack: Next.js 16 (App Router) + React 19 + Tailwind CSS 4 + Framer Motion + nex
 | QA | `AGENTS-QA.md` | Checklist de qualidade, acessibilidade, performance |
 | Dev | `AGENTS-DEV.md` | Padrões de código, componentes, boas práticas |
 | Copy | `AGENTS-COPY.md` | Copywriting, UX Writing, SEO, tom de voz |
+| Git | `AGENTS-GIT.md` | Git Flow, branches, commits, PRs, CI/CD |
 
 ## Comandos Úteis
 
@@ -78,8 +79,23 @@ npm run build && npx wrangler pages deploy out --project-name=sinaptech-landing 
 
 ## Fluxo de Trabalho
 
-1. Edite os componentes em `src/components/`
-2. Teste localmente com `npm run dev`
-3. Rode `npm run lint` para verificar erros
-4. Rode `npm run build` para gerar a build estática
-5. Deploy com `npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production`
+### Branches
+
+| Branch | Uso |
+|--------|-----|
+| `dev` | Desenvolvimento, features, fixes |
+| `master` | Deploy em produção |
+
+### Desenvolvimento
+
+1. Trabalhe na branch `dev`
+2. Edite os componentes em `src/components/`
+3. Teste localmente com `npm run dev`
+4. Rode `npm run lint` para verificar erros
+5. Commit e push para `dev`
+
+### Deploy em Produção
+
+1. Merge de `dev` → `master`
+2. Rode `npm run build` para gerar a build estática
+3. Deploy com `npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production`
