@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 
 interface SynapseNode {
   id: number;
@@ -71,6 +72,17 @@ function nodePosition(id: number): { x: number; y: number } {
 }
 
 export default function SynapseVisual() {
+  const { resolvedTheme } = useTheme();
+
+  const isDark = resolvedTheme === "dark";
+
+  const edgeOpacity = isDark ? 0.28 : 0.45;
+  const gridOpacity = isDark ? 0.3 : 0.2;
+  const ringOpacity = isDark ? 0.35 : 0.25;
+  const nodeFill = isDark ? "var(--color-forest-trust)" : "#047857";
+  const nodeStroke = isDark ? "var(--color-synaptic-mint)" : "#059669";
+  const haloOpacity1 = isDark ? 0.14 : 0.18;
+  const haloOpacity2 = isDark ? 0.05 : 0.08;
   return (
     <svg
       viewBox="0 0 400 340"
@@ -96,8 +108,8 @@ export default function SynapseVisual() {
           </feMerge>
         </filter>
         <radialGradient id="network-halo" cx="50%" cy="50%" r="70%">
-          <stop offset="0%" stopColor="#10B981" stopOpacity="0.14" />
-          <stop offset="55%" stopColor="#10B981" stopOpacity="0.05" />
+          <stop offset="0%" stopColor="#10B981" stopOpacity={haloOpacity1} />
+          <stop offset="55%" stopColor="#10B981" stopOpacity={haloOpacity2} />
           <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
         </radialGradient>
       </defs>
@@ -111,7 +123,7 @@ export default function SynapseVisual() {
       />
 
       <g
-        opacity="0.3"
+        opacity={gridOpacity}
         stroke="var(--color-synaptic-mint)"
         strokeWidth="0.5"
         aria-hidden="true"
@@ -119,7 +131,7 @@ export default function SynapseVisual() {
         <path d="M0 85 H400 M0 255 H400 M100 0 V340 M300 0 V340" />
       </g>
 
-      <g opacity="0.35" stroke="var(--color-synaptic-mint)" aria-hidden="true">
+      <g opacity={ringOpacity} stroke="var(--color-synaptic-mint)" aria-hidden="true">
         <motion.circle
           cx="200"
           cy="170"
@@ -164,7 +176,7 @@ export default function SynapseVisual() {
               x2={to.x}
               y2={to.y}
               stroke="var(--color-synaptic-mint)"
-              strokeOpacity="0.28"
+              strokeOpacity={edgeOpacity}
               strokeWidth="1.2"
               strokeLinecap="round"
               initial={{ pathLength: 0, opacity: 0 }}
@@ -213,7 +225,7 @@ export default function SynapseVisual() {
                 cy={node.y}
                 r="10"
                 fill="none"
-                stroke="var(--color-synaptic-mint)"
+                stroke={nodeStroke}
                 strokeWidth="0.8"
                 initial={{ scale: 0.6, opacity: 0 }}
                 animate={{ scale: [0.6, 1.45, 0.6], opacity: [0, 0.5, 0] }}
@@ -229,8 +241,8 @@ export default function SynapseVisual() {
                 cx={node.x}
                 cy={node.y}
                 r="4"
-                fill="var(--color-forest-trust)"
-                stroke="var(--color-synaptic-mint)"
+                fill={nodeFill}
+                stroke={nodeStroke}
                 strokeWidth="1.5"
                 filter="url(#node-glow)"
                 initial={{ scale: 0, opacity: 0 }}
