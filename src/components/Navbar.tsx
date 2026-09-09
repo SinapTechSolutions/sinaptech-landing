@@ -73,7 +73,7 @@ export default function Navbar() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="rounded-lg px-3 py-2 text-sm font-medium text-brand-muted transition-colors duration-200 ease-out hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint dark:hover:text-white"
+                    className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors duration-200 ease-out hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint dark:text-slate-300 dark:hover:text-white"
                   >
                     {link.label}
                   </a>
@@ -125,7 +125,7 @@ export default function Navbar() {
                     <a
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="block rounded-lg px-3 py-2.5 text-sm font-medium text-brand-muted transition-colors duration-200 ease-out hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint dark:hover:text-white"
+                      className="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors duration-200 ease-out hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint dark:text-slate-300 dark:hover:text-white"
                     >
                       {link.label}
                     </a>
