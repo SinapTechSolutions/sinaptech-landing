@@ -22,6 +22,7 @@ Stack: Next.js 16 (App Router) + React 19 + Tailwind CSS 4 + Framer Motion + nex
 | QA | `AGENTS-QA.md` | Checklist de qualidade, acessibilidade, performance |
 | Dev | `AGENTS-DEV.md` | Padrões de código, componentes, boas práticas |
 | Copy | `AGENTS-COPY.md` | Copywriting, UX Writing, SEO, tom de voz |
+| Git | `AGENTS-GIT.md` | Git Flow, branches, commits, PRs, CI/CD |
 
 ## Comandos Úteis
 
