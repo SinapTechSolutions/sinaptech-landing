@@ -91,18 +91,18 @@ export default function SynapseVisual() {
         halo2: 0.05,
       }
     : {
-        edge: "#059669",
-        edgeOpacity: 0.4,
-        grid: "#059669",
-        gridOpacity: 0.18,
-        ring: "#059669",
-        ringOpacity: 0.22,
-        nodeFill: "#047857",
-        nodeStroke: "#059669",
-        particle1: "#10B981",
-        particle2: "#047857",
-        halo1: 0.2,
-        halo2: 0.08,
+        edge: "#047857",
+        edgeOpacity: 0.55,
+        grid: "#047857",
+        gridOpacity: 0.25,
+        ring: "#047857",
+        ringOpacity: 0.3,
+        nodeFill: "#065F46",
+        nodeStroke: "#047857",
+        particle1: "#059669",
+        particle2: "#065F46",
+        halo1: 0.25,
+        halo2: 0.1,
       };
 
   return (
@@ -133,7 +133,7 @@ export default function SynapseVisual() {
 
       <circle cx="200" cy="170" r="180" fill="url(#network-halo)" aria-hidden="true" />
 
-      <g opacity={colors.gridOpacity} stroke={colors.grid} strokeWidth="0.5" aria-hidden="true">
+      <g opacity={colors.gridOpacity} stroke={colors.grid} strokeWidth={isDark ? 0.5 : 0.7} aria-hidden="true">
         <path d="M0 85 H400 M0 255 H400 M100 0 V340 M300 0 V340" />
       </g>
 
@@ -175,7 +175,7 @@ export default function SynapseVisual() {
               y2={to.y}
               stroke={colors.edge}
               strokeOpacity={colors.edgeOpacity}
-              strokeWidth="1.2"
+              strokeWidth={isDark ? 1.2 : 1.6}
               strokeLinecap="round"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: 1 }}
@@ -198,7 +198,7 @@ export default function SynapseVisual() {
               x2={to.x}
               y2={to.y}
               stroke="url(#synapse-particle)"
-              strokeWidth="1.6"
+              strokeWidth={isDark ? 1.6 : 2}
               strokeLinecap="round"
               strokeDasharray="3 18"
               animate={{ opacity: [0.1, 0.75, 0.75, 0.1], strokeDashoffset: [0, -84] }}
@@ -212,12 +212,13 @@ export default function SynapseVisual() {
         {NODES.map((node, i) => {
           const origin = `${node.x}px ${node.y}px`;
           const stagger = (i % 7) * 0.16;
+          const nodeR = isDark ? 4 : 5;
           return (
             <motion.g key={`node-${node.id}`}>
               <motion.circle
                 cx={node.x}
                 cy={node.y}
-                r="10"
+                r={isDark ? 10 : 12}
                 fill="none"
                 stroke={colors.nodeStroke}
                 strokeWidth="0.8"
@@ -229,7 +230,7 @@ export default function SynapseVisual() {
               <motion.circle
                 cx={node.x}
                 cy={node.y}
-                r="4"
+                r={nodeR}
                 fill={colors.nodeFill}
                 stroke={colors.nodeStroke}
                 strokeWidth="1.5"
@@ -253,7 +254,7 @@ export default function SynapseVisual() {
           return segments.map((segment, j) => (
             <motion.circle
               key={`pulse-${i}-${j}`}
-              r="3"
+              r={isDark ? 3 : 4}
               fill="url(#synapse-particle)"
               filter="url(#node-glow)"
               initial={{ cx: segment.from.x, cy: segment.from.y, opacity: 0 }}
