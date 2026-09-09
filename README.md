@@ -73,7 +73,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ### Configuração
 
 1. Conecte o repositório GitHub ao Vercel
-2. Adicione a variável `DATABASE_URL` no painel do Vercel
+2. Adicione as variáveis `DATABASE_URL` e `DIRECT_URL` no painel do Vercel
 3. O deploy é automático a cada push na branch `dev`
 
 ## Learn More
