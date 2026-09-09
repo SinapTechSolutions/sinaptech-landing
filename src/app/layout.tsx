@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "CRAWDLER_VERIFICATION_CODE",
   },
 };
 
