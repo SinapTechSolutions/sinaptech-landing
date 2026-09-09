@@ -90,8 +90,8 @@ npm run build && npx wrangler pages deploy out --project-name=sinaptech-landing 
 
 | Branch | Uso |
 |--------|-----|
-| `dev` | Desenvolvimento, features, fixes |
-| `master` | Deploy em produção |
+| `dev` | Desenvolvimento + deploy em produção |
+| `master` | Branch estável, atualizada apenas via PR |
 
 ### Desenvolvimento
 
@@ -103,9 +103,13 @@ npm run build && npx wrangler pages deploy out --project-name=sinaptech-landing 
 
 ### Deploy em Produção
 
-1. Merge de `dev` → `master`
-2. Rode `npm run build` para gerar a build estática
-3. Deploy com `npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production`
+1. Rode `npm run build` para gerar a build estática
+2. Deploy com `npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production`
+
+### Sincronizar com Master
+
+1. Abra um **Pull Request** de `dev` → `master`
+2. Após review e aprovação, merge via GitHub
 
 ### Regra Obrigatória
 
