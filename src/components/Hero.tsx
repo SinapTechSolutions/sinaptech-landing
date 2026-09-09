@@ -29,7 +29,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-synaptic-mint/30 bg-synaptic-mint/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-forest-trust dark:text-synaptic-mint">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-xs font-semibold tracking-wide text-emerald-800 dark:border-synaptic-mint/30 dark:bg-synaptic-mint/10 dark:text-synaptic-mint">
                 <span className="relative flex h-2 w-2" aria-hidden="true">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-70" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
@@ -42,14 +42,14 @@ export default function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-              className="mt-6 font-display text-4xl font-extrabold tracking-tight text-brand-ink md:text-5xl lg:text-6xl dark:text-slate-50"
+              className="mt-6 font-display text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl lg:text-6xl dark:text-slate-50"
             >
               A sinapse perfeita entre{" "}
-              <span className="text-brand-ink dark:text-synaptic-mint">
+              <span className="text-emerald-700 dark:text-synaptic-mint">
                 visão humana
               </span>{" "}
               e{" "}
-              <span className="text-brand-ink dark:text-synaptic-mint">
+              <span className="text-emerald-700 dark:text-synaptic-mint">
                 inteligência artificial
               </span>
               .
@@ -59,7 +59,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="mt-6 max-w-2xl text-lg leading-relaxed text-brand-muted"
+              className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400"
             >
               Do problema complexo ao resultado extraordinário, unimos visão de
               negócios, engenharia de software e inteligência artificial para
