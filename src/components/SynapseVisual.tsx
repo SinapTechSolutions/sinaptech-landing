@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 
 interface SynapseNode {
   id: number;
@@ -71,6 +72,39 @@ function nodePosition(id: number): { x: number; y: number } {
 }
 
 export default function SynapseVisual() {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
+  const colors = isDark
+    ? {
+        edge: "#10B981",
+        edgeOpacity: 0.28,
+        grid: "#10B981",
+        gridOpacity: 0.3,
+        ring: "#10B981",
+        ringOpacity: 0.35,
+        nodeFill: "#065F46",
+        nodeStroke: "#10B981",
+        particle1: "#5EEAD4",
+        particle2: "#10B981",
+        halo1: 0.14,
+        halo2: 0.05,
+      }
+    : {
+        edge: "#047857",
+        edgeOpacity: 0.55,
+        grid: "#047857",
+        gridOpacity: 0.25,
+        ring: "#047857",
+        ringOpacity: 0.3,
+        nodeFill: "#065F46",
+        nodeStroke: "#047857",
+        particle1: "#059669",
+        particle2: "#065F46",
+        halo1: 0.25,
+        halo2: 0.1,
+      };
+
   return (
     <svg
       viewBox="0 0 400 340"
@@ -79,14 +113,9 @@ export default function SynapseVisual() {
       aria-label="Rede neural da Sinaptech com nós pulsando e dados trafegando em alta velocidade"
     >
       <defs>
-        <linearGradient id="synapse-edge" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#10B981" stopOpacity="0.7" />
-          <stop offset="50%" stopColor="#34D399" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#10B981" stopOpacity="0.7" />
-        </linearGradient>
         <linearGradient id="synapse-particle" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#5EEAD4" />
-          <stop offset="100%" stopColor="#10B981" />
+          <stop offset="0%" stopColor={colors.particle1} />
+          <stop offset="100%" stopColor={colors.particle2} />
         </linearGradient>
         <filter id="node-glow" x="-100%" y="-100%" width="300%" height="300%">
           <feGaussianBlur stdDeviation="2.5" result="blur" />
@@ -96,30 +125,19 @@ export default function SynapseVisual() {
           </feMerge>
         </filter>
         <radialGradient id="network-halo" cx="50%" cy="50%" r="70%">
-          <stop offset="0%" stopColor="#10B981" stopOpacity="0.14" />
-          <stop offset="55%" stopColor="#10B981" stopOpacity="0.05" />
-          <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
+          <stop offset="0%" stopColor={colors.edge} stopOpacity={colors.halo1} />
+          <stop offset="55%" stopColor={colors.edge} stopOpacity={colors.halo2} />
+          <stop offset="100%" stopColor={colors.edge} stopOpacity="0" />
         </radialGradient>
       </defs>
 
-      <circle
-        cx="200"
-        cy="170"
-        r="180"
-        fill="url(#network-halo)"
-        aria-hidden="true"
-      />
+      <circle cx="200" cy="170" r="180" fill="url(#network-halo)" aria-hidden="true" />
 
-      <g
-        opacity="0.3"
-        stroke="var(--color-synaptic-mint)"
-        strokeWidth="0.5"
-        aria-hidden="true"
-      >
+      <g opacity={colors.gridOpacity} stroke={colors.grid} strokeWidth={isDark ? 0.5 : 0.7} aria-hidden="true">
         <path d="M0 85 H400 M0 255 H400 M100 0 V340 M300 0 V340" />
       </g>
 
-      <g opacity="0.35" stroke="var(--color-synaptic-mint)" aria-hidden="true">
+      <g opacity={colors.ringOpacity} stroke={colors.ring} aria-hidden="true">
         <motion.circle
           cx="200"
           cy="170"
@@ -128,11 +146,7 @@ export default function SynapseVisual() {
           strokeWidth="0.8"
           strokeDasharray="2 10"
           animate={{ rotate: 360 }}
-          transition={{
-            duration: 80,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
           style={{ transformOrigin: "200px 170px" }}
         />
         <motion.circle
@@ -143,11 +157,7 @@ export default function SynapseVisual() {
           strokeWidth="0.6"
           strokeDasharray="14 26"
           animate={{ rotate: -360 }}
-          transition={{
-            duration: 110,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          transition={{ duration: 110, repeat: Infinity, ease: "linear" }}
           style={{ transformOrigin: "200px 170px" }}
         />
       </g>
@@ -163,9 +173,9 @@ export default function SynapseVisual() {
               y1={from.y}
               x2={to.x}
               y2={to.y}
-              stroke="var(--color-synaptic-mint)"
-              strokeOpacity="0.28"
-              strokeWidth="1.2"
+              stroke={colors.edge}
+              strokeOpacity={colors.edgeOpacity}
+              strokeWidth={isDark ? 1.2 : 1.6}
               strokeLinecap="round"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: 1 }}
@@ -188,15 +198,11 @@ export default function SynapseVisual() {
               x2={to.x}
               y2={to.y}
               stroke="url(#synapse-particle)"
-              strokeWidth="1.6"
+              strokeWidth={isDark ? 1.6 : 2}
               strokeLinecap="round"
               strokeDasharray="3 18"
               animate={{ opacity: [0.1, 0.75, 0.75, 0.1], strokeDashoffset: [0, -84] }}
-              transition={{
-                duration: 4.2,
-                repeat: Infinity,
-                ease: "linear",
-              }}
+              transition={{ duration: 4.2, repeat: Infinity, ease: "linear" }}
             />
           );
         })}
@@ -206,41 +212,32 @@ export default function SynapseVisual() {
         {NODES.map((node, i) => {
           const origin = `${node.x}px ${node.y}px`;
           const stagger = (i % 7) * 0.16;
+          const nodeR = isDark ? 4 : 5;
           return (
             <motion.g key={`node-${node.id}`}>
               <motion.circle
                 cx={node.x}
                 cy={node.y}
-                r="10"
+                r={isDark ? 10 : 12}
                 fill="none"
-                stroke="var(--color-synaptic-mint)"
+                stroke={colors.nodeStroke}
                 strokeWidth="0.8"
                 initial={{ scale: 0.6, opacity: 0 }}
                 animate={{ scale: [0.6, 1.45, 0.6], opacity: [0, 0.5, 0] }}
-                transition={{
-                  duration: 3.6,
-                  delay: stagger,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                transition={{ duration: 3.6, delay: stagger, repeat: Infinity, ease: "easeInOut" }}
                 style={{ transformOrigin: origin }}
               />
               <motion.circle
                 cx={node.x}
                 cy={node.y}
-                r="4"
-                fill="var(--color-forest-trust)"
-                stroke="var(--color-synaptic-mint)"
+                r={nodeR}
+                fill={colors.nodeFill}
+                stroke={colors.nodeStroke}
                 strokeWidth="1.5"
                 filter="url(#node-glow)"
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: [1, 1.18, 1], opacity: 1 }}
-                transition={{
-                  duration: 3.6,
-                  delay: 0.2 + stagger,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                transition={{ duration: 3.6, delay: 0.2 + stagger, repeat: Infinity, ease: "easeInOut" }}
                 style={{ transformOrigin: origin }}
               />
             </motion.g>
@@ -257,7 +254,7 @@ export default function SynapseVisual() {
           return segments.map((segment, j) => (
             <motion.circle
               key={`pulse-${i}-${j}`}
-              r="3"
+              r={isDark ? 3 : 4}
               fill="url(#synapse-particle)"
               filter="url(#node-glow)"
               initial={{ cx: segment.from.x, cy: segment.from.y, opacity: 0 }}

@@ -1,0 +1,17 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "sinaptech-landing-api-local",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-09",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "vars": {
+    "ENVIRONMENT": "local",
+    "ALLOWED_ORIGINS": "http://localhost:3000,http://127.0.0.1:3000"
+  },
+  "ratelimits": [{
+    "name": "FORM_LIMITER",
+    "namespace_id": "917302",
+    "simple": { "limit": 10, "period": 60 }
+  }]
+}

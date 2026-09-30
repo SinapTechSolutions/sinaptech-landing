@@ -28,9 +28,10 @@ Stack: Next.js 16 (App Router) + React 19 + Tailwind CSS 4 + Framer Motion + nex
 
 ```bash
 npm run dev        # Inicia servidor de desenvolvimento
-npm run build      # Build de produção (gera diretório out/)
+npm run build      # Build de produção (prisma generate + next build)
 npm run lint       # Verifica código com ESLint
-npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production  # Deploy Cloudflare Pages
+npx prisma db push # Aplica schema no banco (desenvolvimento)
+npx prisma generate # Gera cliente Prisma
 ```
 
 ## Estrutura de Componentes
@@ -74,14 +75,22 @@ public/
 
 ## Deploy
 
-- **Plataforma:** Cloudflare Pages
-- **Projeto:** sinaptech-landing
-- **URL Fixa:** https://production.sinaptech-landing.pages.dev
+- **Plataforma:** Vercel
+- **Banco:** Neon Postgres (plano gratuito)
+- **URL:** https://sinaptech-landing.vercel.app
 
-### Atualizar Deploy
+### Configuração
+
+1. Conecte o repositório GitHub ao Vercel
+2. Adicione a variável `DATABASE_URL` no painel do Vercel
+3. O deploy é automático a cada push na branch `dev`
+
+### Desenvolvimento Local
 
 ```bash
-npm run build && npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production
+# Copie .env.local.example para .env.local
+# Preencha com sua DATABASE_URL do Neon
+npm run dev
 ```
 
 ## Fluxo de Trabalho
@@ -90,8 +99,8 @@ npm run build && npx wrangler pages deploy out --project-name=sinaptech-landing 
 
 | Branch | Uso |
 |--------|-----|
-| `dev` | Desenvolvimento, features, fixes |
-| `master` | Deploy em produção |
+| `dev` | Desenvolvimento + deploy em produção |
+| `master` | Branch estável, atualizada apenas via PR |
 
 ### Desenvolvimento
 
@@ -103,9 +112,13 @@ npm run build && npx wrangler pages deploy out --project-name=sinaptech-landing 
 
 ### Deploy em Produção
 
-1. Merge de `dev` → `master`
-2. Rode `npm run build` para gerar a build estática
-3. Deploy com `npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production`
+1. Rode `npm run build` para gerar a build estática
+2. Push para `dev` — o Vercel faz deploy automaticamente
+
+### Sincronizar com Master
+
+1. Abra um **Pull Request** de `dev` → `master`
+2. Após review e aprovação, merge via GitHub
 
 ### Regra Obrigatória
 
