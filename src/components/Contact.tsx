@@ -103,7 +103,7 @@ export default function Contact() {
   };
 
   const inputClasses = (hasError: boolean) =>
-    `w-full rounded-lg border bg-surface-2 px-4 py-3 text-sm text-brand-ink placeholder:text-brand-muted transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-surface ${
+    `w-full rounded-lg border bg-surface-2 px-4 py-3 text-base text-brand-ink placeholder:text-brand-muted transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-surface ${
       hasError
         ? "border-human-amber focus:ring-human-amber/60"
         : "border-line focus:ring-synaptic-mint"

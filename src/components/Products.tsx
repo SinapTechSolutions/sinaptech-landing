@@ -114,7 +114,7 @@ export default function Products() {
               type="button"
               onClick={() => scrollByCards(-1)}
               aria-label="Produtos anteriores"
-              className="ui-card inline-flex h-10 w-10 items-center justify-center rounded-xl text-brand-muted transition-all duration-200 ease-out hover:border-synaptic-mint/60 hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+              className="ui-card inline-flex h-11 w-11 items-center justify-center rounded-xl text-brand-muted transition-all duration-200 ease-out hover:border-synaptic-mint/60 hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
             >
               <ChevronLeft size={18} aria-hidden="true" />
             </button>
@@ -122,7 +122,7 @@ export default function Products() {
               type="button"
               onClick={() => scrollByCards(1)}
               aria-label="Próximos produtos"
-              className="ui-card inline-flex h-10 w-10 items-center justify-center rounded-xl text-brand-muted transition-all duration-200 ease-out hover:border-synaptic-mint/60 hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+              className="ui-card inline-flex h-11 w-11 items-center justify-center rounded-xl text-brand-muted transition-all duration-200 ease-out hover:border-synaptic-mint/60 hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
             >
               <ChevronRight size={18} aria-hidden="true" />
             </button>
@@ -156,10 +156,10 @@ export default function Products() {
               />
 
               <div className="relative flex flex-wrap items-center justify-between gap-3">
-                <span className="inline-flex items-center rounded-full border border-[#F59E0B]/60 bg-[#F59E0B]/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-human-amber dark:border-[#F2A900]/40 dark:bg-[#F2A900]/10 dark:text-[#F2A900]">
+                <span className="inline-flex items-center rounded-full border border-[#F59E0B]/60 bg-[#F59E0B]/15 px-3 py-1 text-xs font-bold uppercase tracking-wider text-human-amber dark:border-[#F2A900]/40 dark:bg-[#F2A900]/10 dark:text-[#F2A900]">
                   Produto Proprietário
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#EF4444]/45 bg-[#EF4444]/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#B91C1C] dark:text-[#F87171]">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-[#EF4444]/45 bg-[#EF4444]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[#B91C1C] dark:text-[#F87171]">
                   🔥 Em destaque
                 </span>
               </div>
@@ -200,7 +200,7 @@ export default function Products() {
                 {tatameChips.map((chip) => (
                   <span
                     key={chip.label}
-                    className={`inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-semibold ${chip.tone}`}
+                    className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold ${chip.tone}`}
                   >
                     {chip.label}
                   </span>
@@ -225,7 +225,7 @@ export default function Products() {
             >
               <article className="ui-card flex min-h-[460px] flex-col justify-between rounded-2xl border-2 border-dashed p-8">
                 <div>
-                  <span className="inline-flex items-center rounded-full border border-line bg-surface-2 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-brand-muted">
+                  <span className="inline-flex items-center rounded-full border border-line bg-surface-2 px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-muted">
                     {product.tag}
                   </span>
                   <h3 className="mt-6 font-display text-2xl font-bold leading-snug text-brand-ink">

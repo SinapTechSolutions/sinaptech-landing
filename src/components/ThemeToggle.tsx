@@ -22,7 +22,7 @@ export default function ThemeToggle() {
     return (
       <span
         aria-hidden="true"
-        className="flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-surface/70"
+        className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-surface/70"
       />
     );
   }
@@ -31,7 +31,7 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-surface/70 text-brand-muted backdrop-blur transition-all duration-300 ease-out hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+      className="relative flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-surface/70 text-brand-muted backdrop-blur transition-all duration-300 ease-out hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
       aria-label={label}
     >
       <Sun

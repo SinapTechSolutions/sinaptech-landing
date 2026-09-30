@@ -65,7 +65,7 @@ export default function Footer() {
             <Link
               href="/"
               onClick={goHome}
-              className="inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface rounded-lg"
+              className="inline-flex py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface rounded-lg"
               aria-label="SINAPTECH - Voltar ao topo"
             >
               <Wordmark />
@@ -84,7 +84,7 @@ export default function Footer() {
               {complianceBadges.map((badge) => (
                 <span
                   key={badge.label}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-2 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand-muted"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-2 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-muted"
                 >
                   <badge.icon
                     size={12}
@@ -102,12 +102,12 @@ export default function Footer() {
               <h3 className="text-sm font-semibold text-brand-ink">
                 {column.title}
               </h3>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-2 space-y-1">
                 {column.links.map((link) => {
                   const isExternal = link.href.startsWith("http");
                   const isHome = link.href === "/";
                   const classes =
-                    "text-sm text-brand-muted transition-colors duration-200 ease-out hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint rounded focus-visible:ring-offset-2 focus-visible:ring-offset-surface";
+                    "inline-flex min-h-11 items-center text-sm text-brand-muted transition-colors duration-200 ease-out hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint rounded focus-visible:ring-offset-2 focus-visible:ring-offset-surface";
                   return (
                     <li key={link.label}>
                       {isHome ? (

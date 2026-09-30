@@ -117,7 +117,7 @@ function formatPhone(value: string): string {
 }
 
 function inputClasses(hasError: boolean): string {
-  return `w-full rounded-lg border bg-surface-2 px-4 py-3 text-sm text-brand-ink placeholder:text-brand-muted transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-surface ${
+  return `w-full rounded-lg border bg-surface-2 px-4 py-3 text-base text-brand-ink placeholder:text-brand-muted transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-surface ${
     hasError
       ? "border-human-amber focus:ring-human-amber/60"
       : "border-line focus:ring-synaptic-mint"
@@ -570,7 +570,7 @@ export default function Diagnostic() {
                       type="button"
                       aria-pressed={active}
                       onClick={() => toggleChallenge(challenge)}
-                      className={`inline-flex items-center gap-1.5 rounded-full border px-3.5 py-2 text-xs font-semibold transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface ${
+                      className={`inline-flex min-h-11 items-center gap-1.5 rounded-full border px-3.5 py-2 text-xs font-semibold transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface ${
                         active
                           ? "border-forest-trust bg-forest-trust text-white"
                           : errors.challenges

@@ -93,7 +93,7 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={goHome}
-              className="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface rounded-lg"
+              className="flex items-center gap-2 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface rounded-lg"
               aria-label="SINAPTECH - Voltar ao topo"
             >
               <Wordmark />
@@ -126,7 +126,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileOpen((open) => !open)}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface lg:hidden"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface lg:hidden"
                 aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-menu"
@@ -151,32 +151,34 @@ export default function Navbar() {
               transition={{ duration: 0.25, ease: "easeOut" }}
               className="overflow-hidden border-t border-line bg-surface/95 backdrop-blur-md lg:hidden"
             >
-              <ul className="space-y-1 px-4 py-4">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <NavAnchor
-                      href={link.href}
-                      onClick={
-                        link.href === "/"
-                          ? goHome
-                          : () => setMobileOpen(false)
-                      }
-                      className="block rounded-lg px-3 py-2.5 text-sm font-medium text-brand-muted transition-colors duration-200 ease-out hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint"
+              <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto">
+                <ul className="space-y-1 px-4 py-4">
+                  {navLinks.map((link) => (
+                    <li key={link.href}>
+                      <NavAnchor
+                        href={link.href}
+                        onClick={
+                          link.href === "/"
+                            ? goHome
+                            : () => setMobileOpen(false)
+                        }
+                        className="block rounded-lg px-3 py-3 text-sm font-medium text-brand-muted transition-colors duration-200 ease-out hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint"
+                      >
+                        {link.label}
+                      </NavAnchor>
+                    </li>
+                  ))}
+                  <li className="pt-2">
+                    <a
+                      href="#contato"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center justify-center rounded-lg bg-forest-trust px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 ease-out hover:bg-forest-trust-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                     >
-                      {link.label}
-                    </NavAnchor>
+                      Vamos Construir
+                    </a>
                   </li>
-                ))}
-                <li className="pt-2">
-                  <a
-                    href="#contato"
-                    onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-center rounded-lg bg-forest-trust px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 ease-out hover:bg-forest-trust-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
-                  >
-                    Vamos Construir
-                  </a>
-                </li>
-              </ul>
+                </ul>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
