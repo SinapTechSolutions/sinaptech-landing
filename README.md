@@ -76,8 +76,17 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ### Configuração
 
 1. Conecte o repositório GitHub ao Vercel
-2. Adicione as variáveis `DATABASE_URL` e `DIRECT_URL` no painel do Vercel
+2. Adicione as variáveis `DATABASE_URL`, `DIRECT_URL`, `SMTP_HOST`, `SMTP_PORT`,
+   `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` e `DIAGNOSTIC_TO_EMAIL` no painel do Vercel
 3. O deploy é automático a cada push na branch `dev`
+
+### Desenvolvimento Local
+
+```bash
+cp .env.example .env.local   # preencha DATABASE_URL, DIRECT_URL e SMTP
+npm run dev
+npx prisma db push           # cria Contact e Diagnostic (usa DIRECT_URL)
+```
 
 ## Learn More
 

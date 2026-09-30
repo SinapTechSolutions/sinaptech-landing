@@ -102,12 +102,21 @@ Variante escura: `@custom-variant dark (&:where(.dark, .dark *));` — a classe 
   transformação quando o sistema pede movimento reduzido; `globals.css` zera as
   animações CSS no mesmo `@media`.
 - `SynapseVisual.tsx` (Hero) tem uma versão estática (`StaticSynapse`) ativada
-  por `prefers-reduced-motion`, lida no `useEffect` para não gerar hydration
-  mismatch.
+  por `prefers-reduced-motion` **ou** `max-width: 1023px` (mesmo `useEffect`,
+  lido lá para não gerar hydration mismatch) — no smartphone não há animação.
 - Easing padrão de entradas: `[0.22, 1, 0.36, 1]`.
+- Grade da Hero: camada `.hero-grid-sweep` (quadradinhos de 28px + varredura
+  de 9s) tem `animation: none` e `opacity: 0` abaixo de 1024px.
 - Ao animar `transform` em SVG, o Framer força `transform-box: fill-box` —
   **não** passe `transformOrigin` com coordenadas do viewBox (o anel/nó sai do
   lugar); o padrão `50% 50%` já centraliza corretamente.
+
+### URL inicial
+
+- Logo (navbar e rodapé), item "Início" e o efeito de montagem do `Hero` usam
+  `<Link href="/">` + `history.replaceState(null, "", "/")` → a página sempre
+  volta ao estado inicial `/` (sem `#hash`).
+- Âncoras de seção continuam escrevendo o hash normalmente (`/#metodologia`).
 
 ## Deploy
 
@@ -118,15 +127,18 @@ Variante escura: `@custom-variant dark (&:where(.dark, .dark *));` — a classe 
 ### Configuração
 
 1. Conecte o repositório GitHub ao Vercel
-2. Adicione a variável `DATABASE_URL` no painel do Vercel
+2. Adicione no painel do Vercel: `DATABASE_URL`, `DIRECT_URL`, `SMTP_HOST`,
+   `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` e `DIAGNOSTIC_TO_EMAIL`
 3. O deploy é automático a cada push na branch `dev`
 
 ### Desenvolvimento Local
 
 ```bash
-# Copie .env.local.example para .env.local
-# Preencha com sua DATABASE_URL do Neon
+# Copie .env.example para .env.local
+# Preencha DATABASE_URL, DIRECT_URL e as variáveis SMTP
 npm run dev
+
+npx prisma db push   # cria Contact e Diagnostic (usa DIRECT_URL)
 ```
 
 ## Fluxo de Trabalho
