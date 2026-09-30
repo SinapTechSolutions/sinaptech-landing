@@ -14,8 +14,19 @@ model Contact {
   createdAt DateTime @default(now())
 }
 
-model Newsletter {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  createdAt DateTime @default(now())
+model Diagnostic {
+  id          String   @id @default(uuid())
+  name        String
+  email       String
+  phone       String
+  company     String
+  role        String?
+  segment     String
+  teamSize    String
+  challenges  String
+  tools       String?
+  budget      String
+  timeline    String
+  context     String
+  createdAt   DateTime @default(now())
 }

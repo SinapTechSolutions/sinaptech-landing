@@ -27,12 +27,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 | Hero | Split-screen com animação de sinapse SVG + cards flutuantes |
 | TrustBadges | Badges de conformidade (LGPD, Licitações, Segurança) |
 | Solutions | Bento Grid de soluções (IA, SaaS, GovTech, Sob Demanda) |
+| Modal | Shell de modal genérico (overlay, Escape, foco, scroll-lock) |
 | SolutionModal | Modal de detalhes de cada solução |
-| Sinapse | Timeline do Ciclo Sináptico (4 etapas) |
+| Sinapse | Seção Metodologia — 4 etapas com entregáveis por etapa |
 | SynapseVisual | Animação SVG de rede neural |
 | Products | Carrossel de produtos proprietários (Tatame Squad) |
 | ROICalculator | Simulador de impacto operacional por segmento |
+| Diagnostic | Diagnóstico gratuito — CTA que abre o form em modal (e-mail + banco) |
 | DNA | Missão, Manifesto, Visão |
+| Testimonials | Depoimentos de clientes |
 | FAQ | Perguntas frequentes com accordion |
 | Contact | Formulário + info de contato (email, WhatsApp) |
 | ThemeToggle | Toggle light/dark com detecção automática do sistema |

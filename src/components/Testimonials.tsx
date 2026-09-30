@@ -43,7 +43,7 @@ export default function Testimonials() {
   return (
     <section
       id="depoimentos"
-      className="scroll-mt-24 bg-slate-50 py-20 sm:py-28 dark:bg-slate-900/50"
+      className="scroll-mt-24 bg-surface-2 py-20 sm:py-28"
       aria-labelledby="depoimentos-titulo"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -54,16 +54,16 @@ export default function Testimonials() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="mx-auto max-w-2xl text-center"
         >
-          <span className="text-xs font-bold uppercase tracking-widest text-forest-trust dark:text-synaptic-mint">
+          <span className="text-xs font-bold uppercase tracking-widest text-synaptic-mint">
             Depoimentos
           </span>
           <h2
             id="depoimentos-titulo"
-            className="mt-3 font-display text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl dark:text-slate-50"
+            className="mt-3 font-display text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl"
           >
             Quem Confia na Sinaptech
           </h2>
-          <p className="mt-4 text-lg text-brand-muted">
+          <p className="mt-4 text-lg text-brand-body">
             Resultados reais de empresas que já passaram pela evolução sináptica.
           </p>
         </motion.div>
@@ -80,7 +80,7 @@ export default function Testimonials() {
                 delay: i * 0.1,
                 ease: "easeOut",
               }}
-              className="group relative rounded-2xl border border-slate-200/50 bg-white p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] dark:border-slate-800 dark:bg-slate-900 dark:shadow-none dark:hover:shadow-none"
+              className="ui-card-hover group relative rounded-2xl p-8 transition-all duration-300 ease-out hover:-translate-y-1"
             >
               <Quote
                 size={32}
@@ -99,11 +99,11 @@ export default function Testimonials() {
                 ))}
               </div>
 
-              <blockquote className="mt-5 text-sm leading-relaxed text-brand-muted dark:text-slate-400">
+              <blockquote className="mt-5 text-sm leading-relaxed text-brand-body">
                 &ldquo;{t.content}&rdquo;
               </blockquote>
 
-              <div className="mt-6 flex items-center gap-3 border-t border-slate-100 pt-5 dark:border-slate-800">
+              <div className="mt-6 flex items-center gap-3 border-t border-line-soft pt-5">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-synaptic-mint/10 text-sm font-bold text-synaptic-mint">
                   {t.name
                     .split(" ")
@@ -112,7 +112,7 @@ export default function Testimonials() {
                     .slice(0, 2)}
                 </span>
                 <div>
-                  <span className="block text-sm font-semibold text-brand-ink dark:text-slate-50">
+                  <span className="block text-sm font-semibold text-brand-ink">
                     {t.name}
                   </span>
                   <span className="block text-xs text-brand-muted">

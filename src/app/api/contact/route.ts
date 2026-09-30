@@ -1,23 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-
-const FREE_EMAIL_DOMAINS = [
-  "gmail.com",
-  "googlemail.com",
-  "hotmail.com",
-  "outlook.com",
-  "outlook.com.br",
-  "live.com",
-  "yahoo.com",
-  "yahoo.com.br",
-  "bol.com.br",
-  "uol.com.br",
-  "terra.com.br",
-  "icloud.com",
-  "aol.com",
-  "proton.me",
-  "protonmail.com",
-];
+import { validateCorporateEmail } from "@/lib/email";
 
 interface ContactPayload {
   name: string;
@@ -37,14 +20,9 @@ function validate(payload: unknown): {
   }
 
   const email = data?.email?.trim() ?? "";
-  if (!email) {
-    errors.email = "Informe seu e-mail corporativo.";
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-    errors.email = "Formato de e-mail inválido.";
-  } else if (
-    FREE_EMAIL_DOMAINS.some((d) => email.toLowerCase().endsWith(`@${d}`))
-  ) {
-    errors.email = "Use um e-mail corporativo (ex.: nome@empresa.com.br).";
+  const emailError = validateCorporateEmail(email);
+  if (emailError) {
+    errors.email = emailError;
   }
 
   if (!data?.need) {

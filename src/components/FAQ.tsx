@@ -74,11 +74,11 @@ export default function FAQ() {
         >
           <h2
             id="faq-titulo"
-            className="font-display text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl dark:text-slate-50"
+            className="font-display text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl"
           >
             Perguntas frequentes
           </h2>
-          <p className="mt-4 text-lg text-brand-muted">
+          <p className="mt-4 text-lg text-brand-body">
             As respostas diretas para as dúvidas mais comuns sobre como
             trabalhamos.
           </p>
@@ -97,10 +97,10 @@ export default function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
-                className={`rounded-xl border bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 ease-out dark:bg-slate-900 dark:shadow-none ${
+                className={`ui-card rounded-xl transition-all duration-300 ease-out ${
                   isOpen
-                    ? "border-emerald-500/40 dark:border-emerald-500/40"
-                    : "border-slate-200/50 dark:border-slate-800"
+                    ? "border-synaptic-mint/60 shadow-card-hover"
+                    : ""
                 }`}
               >
                 <h3>
@@ -110,16 +110,16 @@ export default function FAQ() {
                     aria-expanded={isOpen}
                     aria-controls={answerId}
                     id={questionId}
-                    className="flex w-full items-center justify-between gap-4 rounded-xl px-6 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2"
+                    className="flex w-full items-center justify-between gap-4 rounded-xl px-6 py-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                   >
-                    <span className="font-display text-base font-semibold text-brand-ink sm:text-lg dark:text-slate-50">
+                    <span className="font-display text-base font-semibold text-brand-ink sm:text-lg">
                       {item.question}
                     </span>
                     <span
                       className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-all duration-300 ease-out ${
                         isOpen
                           ? "bg-synaptic-mint/10 text-synaptic-mint"
-                          : "bg-slate-100 text-brand-muted dark:bg-slate-800"
+                          : "bg-surface-2 text-brand-muted"
                       }`}
                       aria-hidden="true"
                     >
@@ -146,7 +146,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="px-6 pb-6 leading-relaxed text-brand-muted">
+                      <p className="px-6 pb-6 leading-relaxed text-brand-body">
                         {item.answer}
                       </p>
                     </motion.div>

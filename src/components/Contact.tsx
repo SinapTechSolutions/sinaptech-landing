@@ -11,8 +11,8 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
-const WHATSAPP_LINK =
-  "https://wa.me/5583921549886?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20as%20solu%C3%A7%C3%B5es%20da%20Sinaptech.";
+import { validateCorporateEmail } from "@/lib/email";
+import { WHATSAPP_LINK } from "@/lib/site";
 
 const NEED_OPTIONS = [
   "IA Local & Automação",
@@ -39,40 +39,6 @@ interface ContactFormErrors {
   need?: string;
 }
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-const FREE_EMAIL_DOMAINS = [
-  "gmail.com",
-  "googlemail.com",
-  "hotmail.com",
-  "outlook.com",
-  "outlook.com.br",
-  "live.com",
-  "yahoo.com",
-  "yahoo.com.br",
-  "bol.com.br",
-  "uol.com.br",
-  "terra.com.br",
-  "icloud.com",
-  "aol.com",
-  "proton.me",
-  "protonmail.com",
-];
-
-function validateEmail(email: string): string | null {
-  const trimmed = email.trim();
-  if (!trimmed) return "Informe seu e-mail corporativo.";
-  if (!EMAIL_REGEX.test(trimmed)) return "Formato de e-mail inválido.";
-  if (
-    FREE_EMAIL_DOMAINS.some((domain) =>
-      trimmed.toLowerCase().endsWith(`@${domain}`)
-    )
-  ) {
-    return "Use um e-mail corporativo (ex.: nome@empresa.com.br).";
-  }
-  return null;
-}
-
 export default function Contact() {
   const [form, setForm] = useState<ContactFormState>(INITIAL_STATE);
   const [errors, setErrors] = useState<ContactFormErrors>({});
@@ -87,7 +53,7 @@ export default function Contact() {
   };
 
   const handleEmailBlur = () => {
-    const emailError = validateEmail(form.email);
+    const emailError = validateCorporateEmail(form.email);
     setErrors((prev) => ({ ...prev, email: emailError ?? undefined }));
   };
 
@@ -98,7 +64,7 @@ export default function Contact() {
     if (!form.name.trim()) {
       nextErrors.name = "Informe seu nome completo.";
     }
-    const emailError = validateEmail(form.email);
+    const emailError = validateCorporateEmail(form.email);
     if (emailError) {
       nextErrors.email = emailError;
     }
@@ -137,10 +103,10 @@ export default function Contact() {
   };
 
   const inputClasses = (hasError: boolean) =>
-    `w-full rounded-lg border bg-transparent px-4 py-3 text-sm text-brand-ink placeholder:text-brand-muted transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-white dark:text-white dark:focus:ring-offset-slate-900 ${
+    `w-full rounded-lg border bg-surface-2 px-4 py-3 text-sm text-brand-ink placeholder:text-brand-muted transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-offset-surface ${
       hasError
         ? "border-human-amber focus:ring-human-amber/60"
-        : "border-slate-200 focus:ring-synaptic-mint dark:border-slate-700"
+        : "border-line focus:ring-synaptic-mint"
     }`;
 
   return (
@@ -159,11 +125,11 @@ export default function Contact() {
         >
           <h2
             id="contato-titulo"
-            className="font-display text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl dark:text-slate-50"
+            className="font-display text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl"
           >
             Pronto para sua próxima evolução?
           </h2>
-          <p className="mt-4 text-lg text-brand-muted">
+          <p className="mt-4 text-lg text-brand-body">
             Entre em contato diretamente com nossa equipe de engenharia e
             negócios.
           </p>
@@ -179,7 +145,7 @@ export default function Contact() {
             <div className="space-y-5">
               <a
                 href="mailto:contato@sinaptech.com.br"
-                className="group flex items-center justify-between gap-4 rounded-xl border border-slate-200/50 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none"
+                className="ui-card-hover group flex items-center justify-between gap-4 rounded-xl p-6 transition-all duration-300 ease-out hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
                 <span className="flex items-center gap-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-synaptic-mint/10 text-synaptic-mint">
@@ -187,7 +153,7 @@ export default function Contact() {
                   </span>
                   <span>
                     <span className="block text-sm text-brand-muted">E-mail</span>
-                    <span className="block font-medium text-brand-ink dark:text-slate-50">
+                    <span className="block font-medium text-brand-ink">
                       contato@sinaptech.com.br
                     </span>
                   </span>
@@ -199,7 +165,7 @@ export default function Contact() {
                 />
               </a>
 
-              <div className="rounded-xl border border-slate-200/50 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:border-slate-800 dark:bg-slate-900 dark:shadow-none">
+              <div className="ui-card rounded-xl p-6">
                 <div className="flex items-center gap-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-synaptic-mint/10 text-synaptic-mint">
                     <MessageCircle size={20} aria-hidden="true" />
@@ -208,7 +174,7 @@ export default function Contact() {
                     <span className="block text-sm text-brand-muted">
                       WhatsApp
                     </span>
-                    <span className="block font-medium text-brand-ink dark:text-slate-50">
+                    <span className="block font-medium text-brand-ink">
                       (83) 92154-9886
                     </span>
                   </span>
@@ -217,7 +183,7 @@ export default function Contact() {
                   href={WHATSAPP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-synaptic-mint/40 bg-synaptic-mint/10 px-5 py-3 text-sm font-semibold text-forest-trust transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-synaptic-mint/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 dark:text-synaptic-mint"
+                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-synaptic-mint/50 bg-synaptic-mint/10 px-5 py-3 text-sm font-semibold text-synaptic-mint transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-synaptic-mint/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                 >
                   Falar no WhatsApp
                   <ArrowUpRight size={16} aria-hidden="true" />
@@ -234,17 +200,17 @@ export default function Contact() {
           >
             {submitted ? (
               <div
-                className="flex h-full flex-col items-center justify-center rounded-xl border border-slate-200/50 bg-white p-10 text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:border-slate-800 dark:bg-slate-900 dark:shadow-none"
+                className="ui-card flex h-full flex-col items-center justify-center rounded-xl p-10 text-center"
                 role="status"
                 aria-live="polite"
               >
                 <span className="flex h-16 w-16 items-center justify-center rounded-full bg-synaptic-mint/10 text-synaptic-mint">
                   <CheckCircle2 size={28} aria-hidden="true" />
                 </span>
-                <h3 className="mt-6 font-display text-2xl font-bold text-brand-ink dark:text-slate-50">
+                <h3 className="mt-6 font-display text-2xl font-bold text-brand-ink">
                   Sua conversa foi iniciada!
                 </h3>
-                <p className="mt-2 max-w-sm text-brand-muted">
+                <p className="mt-2 max-w-sm text-brand-body">
                   Nossa equipe de engenharia vai entrar em contato em até 24
                   horas úteis.
                 </p>
@@ -253,14 +219,14 @@ export default function Contact() {
               <form
                 onSubmit={handleSubmit}
                 noValidate
-                className="rounded-xl border border-slate-200/50 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] sm:p-8 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none"
+                className="ui-card rounded-xl p-6 sm:p-8"
                 aria-label="Formulário de qualificação"
               >
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div className="sm:col-span-1">
                     <label
                       htmlFor="nome-completo"
-                      className="mb-1.5 block text-sm font-medium text-brand-ink dark:text-slate-50"
+                      className="mb-1.5 block text-sm font-medium text-brand-ink"
                     >
                       Nome
                     </label>
@@ -276,7 +242,7 @@ export default function Contact() {
                       aria-describedby={errors.name ? "erro-nome" : undefined}
                     />
                     {errors.name && (
-                      <p id="erro-nome" className="mt-1.5 text-xs font-medium text-amber-600 dark:text-amber-400">
+                      <p id="erro-nome" className="mt-1.5 text-xs font-medium text-human-amber">
                         {errors.name}
                       </p>
                     )}
@@ -285,7 +251,7 @@ export default function Contact() {
                   <div className="sm:col-span-1">
                     <label
                       htmlFor="email-corporativo"
-                      className="mb-1.5 block text-sm font-medium text-brand-ink dark:text-slate-50"
+                      className="mb-1.5 block text-sm font-medium text-brand-ink"
                     >
                       E-mail Corporativo
                     </label>
@@ -302,7 +268,7 @@ export default function Contact() {
                       aria-describedby={errors.email ? "erro-email" : undefined}
                     />
                     {errors.email && (
-                      <p id="erro-email" className="mt-1.5 text-xs font-medium text-amber-600 dark:text-amber-400">
+                      <p id="erro-email" className="mt-1.5 text-xs font-medium text-human-amber">
                         {errors.email}
                       </p>
                     )}
@@ -311,7 +277,7 @@ export default function Contact() {
                   <div className="sm:col-span-2">
                     <label
                       htmlFor="objetivo-principal"
-                      className="mb-1.5 block text-sm font-medium text-brand-ink dark:text-slate-50"
+                      className="mb-1.5 block text-sm font-medium text-brand-ink"
                     >
                       Qual é o seu objetivo principal?
                     </label>
@@ -350,7 +316,7 @@ export default function Contact() {
                       </span>
                     </div>
                     {errors.need && (
-                      <p id="erro-objetivo" className="mt-1.5 text-xs font-medium text-amber-600 dark:text-amber-400">
+                      <p id="erro-objetivo" className="mt-1.5 text-xs font-medium text-human-amber">
                         Selecione seu objetivo principal.
                       </p>
                     )}
@@ -361,14 +327,14 @@ export default function Contact() {
                   type="submit"
                   disabled={loading}
                   aria-busy={loading}
-                  className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#065F46] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-emerald-800 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:bg-forest-trust disabled:opacity-80"
+                  className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-forest-trust px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-forest-trust-light hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:bg-forest-trust disabled:opacity-80"
                 >
                   {loading ? (
                     <>
                       <Loader2
                         size={16}
                         aria-hidden="true"
-                        className="animate-spin text-emerald-200"
+                        className="animate-spin text-white/70"
                       />
                       Sincronizando sinapses...
                     </>

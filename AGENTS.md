@@ -47,12 +47,15 @@ src/
 │   ├── Hero.tsx            # Split-screen com animação de sinapse SVG
 │   ├── TrustBadges.tsx     # Badges de conformidade (LGPD, Licitações)
 │   ├── Solutions.tsx       # Bento Grid de soluções
+│   ├── Modal.tsx           # Shell de modal (overlay, Escape, foco, scroll-lock)
 │   ├── SolutionModal.tsx   # Modal de detalhes de cada solução
-│   ├── Sinapse.tsx         # Timeline do Ciclo Sináptico
+│   ├── Sinapse.tsx         # Seção Metodologia (4 etapas + entregáveis)
 │   ├── SynapseVisual.tsx   # Animação SVG de rede neural
 │   ├── Products.tsx        # Carrossel de produtos proprietários
 │   ├── ROICalculator.tsx   # Simulador de impacto operacional
+│   ├── Diagnostic.tsx      # Diagnóstico gratuito (CTA → modal → e-mail + banco)
 │   ├── DNA.tsx             # Missão, Manifesto, Visão
+│   ├── Testimonials.tsx    # Depoimentos de clientes
 │   ├── FAQ.tsx             # Perguntas frequentes (accordion)
 │   ├── Contact.tsx         # Formulário + info de contato
 │   ├── ThemeToggle.tsx     # Toggle light/dark (detecção automática)
@@ -64,14 +67,47 @@ public/
 
 ## Design Tokens (CSS Variables)
 
+Tokens definidos em `src/app/globals.css` (`:root` e `.dark`, sempre **fora** de `@layer`, e espelhados em `@theme inline` para o Tailwind gerar os utilitários).
+
 | Token | Light | Dark | Uso |
 |---|---|---|---|
-| `--color-brand-snow` | #FAFBFC | #0B1120 | Fundo da página |
-| `--color-brand-ink` | #111827 | #F8FAFC | Texto primário |
-| `--color-brand-muted` | #6B7280 | #94A3B8 | Texto secundário |
-| `--color-forest-trust` | #047857 | #10B981 | Botões primários |
-| `--color-synaptic-mint` | #059669 | #34D399 | Destaques, badges |
-| `--color-human-amber` | #D97706 | #FBBF24 | Alertas |
+| `--color-brand-snow` | #F1F5F9 | #0B1120 | Fundo da página |
+| `--color-surface` | #FFFFFF | #121B2F | Fundo de cards, inputs, navbar |
+| `--color-surface-2` | #E7EDF4 | #0E1626 | Bandas alternadas, chips, inputs |
+| `--color-line` | #DDE5EE | #1F2B42 | Bordas de cards e inputs |
+| `--color-line-soft` | #E9EFF4 | #18233A | Divisórias internas |
+| `--color-brand-ink` | #0F172A | #F8FAFC | Títulos |
+| `--color-brand-body` | #334155 | #CBD5E1 | Texto de parágrafos |
+| `--color-brand-muted` | #5B6678 | #94A3B8 | Texto secundário/legendas |
+| `--color-forest-trust` | #065F46 | #047857 | Fundo de botões primários |
+| `--color-forest-trust-light` | #047857 | #065F46 | Hover do botão primário |
+| `--color-synaptic-mint` | #047857 | #34D399 | Eyebrows, destaques, rings |
+| `--color-synaptic-mint-light` | #10B981 | #6EE7B7 | Hover de destaques |
+| `--color-human-amber` | #A84D08 | #FBBF24 | Atenção, selos, ouro do Tatame |
+| `--color-danger` | #B91C1C | #F87171 | Erros de validação |
+| `--shadow-card` | (slate) | (preto) | Sombra padrão de cards |
+| `--shadow-card-hover` | (slate) | (preto) | Sombra elevada no hover |
+| `--shadow-lift` | (slate, profunda) | (preto, profunda) | Elevação forte (ex.: Metodologia) |
+
+Classes de componente (em `@layer components`):
+
+- `.ui-card` — `surface` + borda `line` + `shadow-card` (use nos cards).
+- `.ui-card-hover` — `.ui-card` + elevação e borda mint no hover/focus.
+
+Variante escura: `@custom-variant dark (&:where(.dark, .dark *));` — a classe `.dark` é aplicada pelo next-themes em `<html>`. **Não usar** o `dark:` nativo do Tailwind, que reage apenas a `prefers-color-scheme`.
+
+### Animações
+
+- `MotionConfig reducedMotion="user"` no `layout.tsx` desliga animações de
+  transformação quando o sistema pede movimento reduzido; `globals.css` zera as
+  animações CSS no mesmo `@media`.
+- `SynapseVisual.tsx` (Hero) tem uma versão estática (`StaticSynapse`) ativada
+  por `prefers-reduced-motion`, lida no `useEffect` para não gerar hydration
+  mismatch.
+- Easing padrão de entradas: `[0.22, 1, 0.36, 1]`.
+- Ao animar `transform` em SVG, o Framer força `transform-box: fill-box` —
+  **não** passe `transformOrigin` com coordenadas do viewBox (o anel/nó sai do
+  lugar); o padrão `50% 50%` já centraliza corretamente.
 
 ## Deploy
 

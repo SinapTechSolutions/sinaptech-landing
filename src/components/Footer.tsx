@@ -1,3 +1,7 @@
+"use client";
+
+import type { MouseEvent } from "react";
+import Link from "next/link";
 import { ShieldCheck, Landmark } from "lucide-react";
 import { Wordmark } from "@/components/Navbar";
 
@@ -10,10 +14,10 @@ const columns: FooterColumn[] = [
   {
     title: "Navegação",
     links: [
-      { label: "Início", href: "#hero" },
+      { label: "Início", href: "/" },
       { label: "Soluções", href: "#solucoes" },
       { label: "Produtos", href: "#produtos" },
-      { label: "Metodologia", href: "#ciclo" },
+      { label: "Metodologia", href: "#metodologia" },
       { label: "Essência", href: "#dna" },
       { label: "Dúvidas", href: "#faq" },
       { label: "Contato", href: "#contato" },
@@ -43,22 +47,30 @@ const complianceBadges = [
 ];
 
 export default function Footer() {
+  // Volta ao estado inicial da página: rota limpa (`/`) e topo.
+  const goHome = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.history.replaceState(null, "", "/");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer
-      className="border-t border-slate-200 bg-white shadow-[0_-8px_30px_rgb(0,0,0,0.04)] dark:border-slate-800 dark:bg-[#0B1120] dark:shadow-none"
+      className="border-t border-line bg-surface shadow-[0_-8px_30px_rgb(15,23,42,0.06)]"
       role="contentinfo"
     >
       <div className="mx-auto max-w-7xl px-4 pb-8 pt-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <a
-              href="#hero"
-              className="inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 rounded-lg"
+            <Link
+              href="/"
+              onClick={goHome}
+              className="inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface rounded-lg"
               aria-label="SINAPTECH - Voltar ao topo"
             >
               <Wordmark />
-            </a>
-            <p className="mt-4 max-w-lg text-sm leading-relaxed text-brand-muted">
+            </Link>
+            <p className="mt-4 max-w-lg text-sm leading-relaxed text-brand-body">
               Software House Premium. Criamos software, inteligência artificial
               e soluções GovTech que combinam engenharia de alto nível,
               inteligência e visão de negócio. Desenvolvemos arquiteturas
@@ -72,7 +84,7 @@ export default function Footer() {
               {complianceBadges.map((badge) => (
                 <span
                   key={badge.label}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand-muted dark:border-slate-800"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-2 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand-muted"
                 >
                   <badge.icon
                     size={12}
@@ -87,23 +99,36 @@ export default function Footer() {
 
           {columns.map((column) => (
             <nav key={column.title} aria-label={column.title}>
-              <h3 className="text-sm font-semibold text-brand-ink dark:text-slate-50">
+              <h3 className="text-sm font-semibold text-brand-ink">
                 {column.title}
               </h3>
               <ul className="mt-4 space-y-3">
                 {column.links.map((link) => {
                   const isExternal = link.href.startsWith("http");
+                  const isHome = link.href === "/";
+                  const classes =
+                    "text-sm text-brand-muted transition-colors duration-200 ease-out hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint rounded focus-visible:ring-offset-2 focus-visible:ring-offset-surface";
                   return (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
-                        {...(isExternal
-                          ? { target: "_blank", rel: "noopener noreferrer" }
-                          : {})}
-                        className="text-sm text-brand-muted transition-colors duration-200 ease-out hover:text-brand-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint rounded focus-visible:ring-offset-2 dark:hover:text-slate-50"
-                      >
-                        {link.label}
-                      </a>
+                      {isHome ? (
+                        <Link
+                          href="/"
+                          onClick={goHome}
+                          className={classes}
+                        >
+                          {link.label}
+                        </Link>
+                      ) : (
+                        <a
+                          href={link.href}
+                          className={classes}
+                          {...(isExternal
+                            ? { target: "_blank", rel: "noopener noreferrer" }
+                            : {})}
+                        >
+                          {link.label}
+                        </a>
+                      )}
                     </li>
                   );
                 })}
@@ -112,7 +137,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 sm:flex-row dark:border-slate-800">
+        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-line-soft pt-8 sm:flex-row">
           <p className="text-center text-sm text-brand-muted sm:text-left">
             SINAPTECH © 2027. Tecnologia que impulsiona resultados. Todos os
             direitos reservados.
