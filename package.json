@@ -4,16 +4,28 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit && tsc -p worker/tsconfig.json",
+    "test": "tsx --test tests/*.test.ts",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate deploy",
+    "worker:dev": "wrangler dev --config worker/wrangler.local.jsonc --ip 127.0.0.1",
+    "worker:check": "wrangler deploy --config worker/wrangler.jsonc --dry-run",
+    "worker:deploy": "wrangler deploy --config worker/wrangler.jsonc"
   },
   "dependencies": {
+    "@prisma/adapter-neon": "7.10.0",
+    "@prisma/adapter-pg": "7.10.0",
+    "@prisma/client": "7.10.0",
     "@tinacms/cli": "^2.6.1",
     "framer-motion": "^13.2.0",
     "lucide-react": "^1.39.0",
     "next": "16.3.4",
     "next-themes": "^0.4.6",
+    "nodemailer": "^10.0.13",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "tinacms": "^3.12.1"
@@ -21,11 +33,19 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^8.0.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.2.3",
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
+    "prisma": "7.10.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "tsx": "^4.20.6",
+    "typescript": "^5",
+    "wrangler": "4.130.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

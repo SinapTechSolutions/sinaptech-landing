@@ -99,11 +99,11 @@ export default function Solutions() {
         >
           <h2
             id="solucoes-titulo"
-            className="font-display text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl dark:text-slate-50"
+            className="font-display text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl"
           >
             O que construímos
           </h2>
-          <p className="mt-4 text-lg text-brand-muted">
+          <p className="mt-4 text-lg text-brand-body">
             Arquiteturas robustas desenvolvidas para governos e empresas
             líderes.
           </p>
@@ -120,7 +120,7 @@ export default function Solutions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
-              className={`group relative overflow-hidden rounded-xl border border-slate-200/50 bg-white p-8 text-left shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900 dark:shadow-none dark:hover:shadow-none ${solution.span}`}
+              className={`ui-card-hover group relative overflow-hidden rounded-xl p-8 text-left transition-all duration-300 ease-out hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface ${solution.span}`}
             >
               <div
                 className="pointer-events-none absolute inset-0 bg-gradient-to-br from-synaptic-mint/8 via-transparent to-forest-trust/8 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
@@ -141,10 +141,10 @@ export default function Solutions() {
                   </span>
                 </div>
 
-                <h3 className="mt-6 font-display text-xl font-bold text-brand-ink dark:text-slate-50">
+                <h3 className="mt-6 font-display text-xl font-bold text-brand-ink">
                   {solution.title}
                 </h3>
-                <p className="mt-3 flex-1 leading-relaxed text-brand-muted">
+                <p className="mt-3 flex-1 leading-relaxed text-brand-body">
                   {solution.description}
                 </p>
 
@@ -152,7 +152,7 @@ export default function Solutions() {
                   {solution.tags.map((tag) => (
                     <li
                       key={tag}
-                      className="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-brand-muted transition-colors duration-300 ease-out group-hover:border-synaptic-mint/40 dark:border-slate-700"
+                      className="rounded-full border border-line px-3 py-1 text-xs font-medium text-brand-muted transition-colors duration-300 ease-out group-hover:border-synaptic-mint/60 group-hover:text-brand-ink"
                     >
                       {tag}
                     </li>

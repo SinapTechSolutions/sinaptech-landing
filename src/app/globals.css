@@ -1,36 +1,116 @@
 @import "tailwindcss";
 
+/* O dark mode do next-themes usa a classe `.dark` no <html>.
+   Sem esta diretiva, o Tailwind v4 liga o sufixo `dark:` a
+   `prefers-color-scheme` e o tema escolhido pelo usuário é ignorado. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --color-brand-snow: #F8FAFC;
-  --color-brand-ink: #0F172A;
-  --color-brand-muted: #475569;
-  --color-forest-trust: #065F46;
+  color-scheme: light;
+
+  /* Superfícies */
+  --color-brand-snow: #f1f5f9;
+  --color-surface: #ffffff;
+  --color-surface-2: #e7edf4;
+  --color-line: #dde5ee;
+  --color-line-soft: #e9eef4;
+
+  /* Texto */
+  --color-brand-ink: #0f172a;
+  --color-brand-body: #334155;
+  --color-brand-muted: #5b6678;
+
+  /* Marca */
+  --color-forest-trust: #065f46;
   --color-forest-trust-light: #047857;
-  --color-synaptic-mint: #10B981;
-  --color-synaptic-mint-light: #34D399;
-  --color-human-amber: #F59E0B;
+  --color-synaptic-mint: #047857;
+  --color-synaptic-mint-light: #10b981;
+  --color-human-amber: #a84d08;
+  --color-danger: #b91c1c;
+
+  /* Visual da sinapse (SVG do Hero) */
+  --synapse-line: #047857;
+  --synapse-line-opacity: 0.55;
+  --synapse-grid-opacity: 0.25;
+  --synapse-ring-opacity: 0.3;
+  --synapse-particle-a: #059669;
+  --synapse-particle-b: #065f46;
+  --synapse-halo-inner: 0.16;
+  --synapse-halo-outer: 0.06;
+  --synapse-node: #065f46;
+
+  /* Elevação */
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04),
+    0 12px 28px -14px rgb(15 23 42 / 0.18);
+  --shadow-card-hover: 0 2px 4px rgb(15 23 42 / 0.06),
+    0 28px 56px -24px rgb(15 23 42 / 0.3);
+  --shadow-lift: 0 1px 2px rgb(15 23 42 / 0.06),
+    0 6px 16px -4px rgb(15 23 42 / 0.16),
+    0 26px 48px -14px rgb(15 23 42 / 0.3);
 }
 
 .dark {
-  --color-brand-snow: #0B1120;
-  --color-brand-ink: #F8FAFC;
-  --color-brand-muted: #94A3B8;
-  --color-forest-trust: #065F46;
-  --color-forest-trust-light: #047857;
-  --color-synaptic-mint: #10B981;
-  --color-synaptic-mint-light: #34D399;
-  --color-human-amber: #F59E0B;
+  color-scheme: dark;
+
+  /* Superfícies */
+  --color-brand-snow: #0b1120;
+  --color-surface: #121b2f;
+  --color-surface-2: #0e1626;
+  --color-line: #1f2b42;
+  --color-line-soft: #18233a;
+
+  /* Texto */
+  --color-brand-ink: #f8fafc;
+  --color-brand-body: #cbd5e1;
+  --color-brand-muted: #94a3b8;
+
+  /* Marca */
+  --color-forest-trust: #047857;
+  --color-forest-trust-light: #065f46;
+  --color-synaptic-mint: #34d399;
+  --color-synaptic-mint-light: #6ee7b7;
+  --color-human-amber: #fbbf24;
+  --color-danger: #f87171;
+
+  /* Visual da sinapse (SVG do Hero) */
+  --synapse-line: #10b981;
+  --synapse-line-opacity: 0.28;
+  --synapse-grid-opacity: 0.3;
+  --synapse-ring-opacity: 0.35;
+  --synapse-particle-a: #5eead4;
+  --synapse-particle-b: #10b981;
+  --synapse-halo-inner: 0.14;
+  --synapse-halo-outer: 0.05;
+  --synapse-node: #10b981;
+
+  /* Elevação */
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.45),
+    0 16px 36px -20px rgb(0 0 0 / 0.8);
+  --shadow-card-hover: 0 2px 4px rgb(0 0 0 / 0.5),
+    0 32px 64px -28px rgb(0 0 0 / 0.9);
+  --shadow-lift: 0 1px 2px rgb(0 0 0 / 0.5),
+    0 6px 16px -4px rgb(0 0 0 / 0.6),
+    0 26px 48px -14px rgb(0 0 0 / 0.9);
 }
 
 @theme inline {
   --color-brand-snow: var(--color-brand-snow);
+  --color-surface: var(--color-surface);
+  --color-surface-2: var(--color-surface-2);
+  --color-line: var(--color-line);
+  --color-line-soft: var(--color-line-soft);
   --color-brand-ink: var(--color-brand-ink);
+  --color-brand-body: var(--color-brand-body);
   --color-brand-muted: var(--color-brand-muted);
   --color-forest-trust: var(--color-forest-trust);
   --color-forest-trust-light: var(--color-forest-trust-light);
   --color-synaptic-mint: var(--color-synaptic-mint);
   --color-synaptic-mint-light: var(--color-synaptic-mint-light);
   --color-human-amber: var(--color-human-amber);
+  --color-danger: var(--color-danger);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-lift: var(--shadow-lift);
   --font-display: "Plus Jakarta Sans", sans-serif;
   --font-sans: "Inter", sans-serif;
 }
@@ -38,8 +118,8 @@
 @utility bg-radial-mint {
   background: radial-gradient(
     circle at center,
-    rgba(16, 185, 129, 0.12) 0%,
-    rgba(16, 185, 129, 0.04) 45%,
+    color-mix(in srgb, var(--color-synaptic-mint) 14%, transparent) 0%,
+    color-mix(in srgb, var(--color-synaptic-mint) 5%, transparent) 45%,
     transparent 70%
   );
 }
@@ -47,9 +127,59 @@
 @utility bg-radial-forest {
   background: radial-gradient(
     circle at center,
-    rgba(6, 95, 70, 0.1) 0%,
+    color-mix(in srgb, var(--color-forest-trust) 12%, transparent) 0%,
     transparent 70%
   );
+}
+
+@layer components {
+  .ui-card,
+  .ui-card-hover {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-card);
+    transition:
+      transform 0.3s ease-out,
+      box-shadow 0.3s ease-out,
+      border-color 0.3s ease-out;
+  }
+
+  .ui-card-hover:hover,
+  .ui-card-hover:focus-visible {
+    border-color: color-mix(in srgb, var(--color-synaptic-mint) 45%, transparent);
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+/* Varredura suave sobre os quadradinhos da Hero: só a máscara se move,
+   a grade permanece estática. Desligada abaixo de 1024px (smartphone/tablet). */
+@keyframes hero-sweep {
+  from {
+    mask-position: -45% 0;
+  }
+  to {
+    mask-position: 145% 0;
+  }
+}
+
+@utility hero-grid-sweep {
+  mask-image: linear-gradient(
+    100deg,
+    transparent 36%,
+    black 50%,
+    transparent 64%
+  );
+  mask-size: 40% 100%;
+  mask-repeat: no-repeat;
+  animation: hero-sweep 9s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  will-change: mask-position;
+}
+
+@media (max-width: 1023px) {
+  .hero-grid-sweep {
+    animation: none;
+    opacity: 0;
+  }
 }
 
 html {
@@ -57,12 +187,28 @@ html {
 }
 
 body {
-  background: var(--color-brand-snow);
-  color: var(--color-brand-ink);
+  background-color: var(--color-brand-snow);
+  color: var(--color-brand-body);
   font-family: var(--font-sans);
 }
 
 ::selection {
-  background: var(--color-synaptic-mint);
+  background: var(--color-forest-trust);
   color: white;
+}
+
+/* Acessibilidade: quem prefere movimento reduzido recebe o conteúdo
+   estático (as animações em JS são tratadas pelo MotionConfig). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

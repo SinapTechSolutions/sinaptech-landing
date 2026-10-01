@@ -7,6 +7,16 @@ import SynapseVisual from "@/components/SynapseVisual";
 
 export default function Hero() {
   useEffect(() => {
+    // A Hero é o estado inicial da página e sempre força o topo; um hash
+    // preso na URL (`/#faq`, `/#hero`) só estaria mentindo sobre onde o
+    // usuário está — então normalizamos a rota para `/`.
+    if (window.location.hash) {
+      window.history.replaceState(
+        null,
+        "",
+        window.location.pathname + window.location.search
+      );
+    }
     window.scrollTo(0, 0);
   }, []);
 
@@ -16,6 +26,12 @@ export default function Hero() {
       className="relative scroll-mt-24 overflow-hidden pb-20 pt-32 sm:pt-36 lg:pb-28 lg:pt-44"
     >
       <div className="absolute inset-0 -z-10" aria-hidden="true">
+        <div
+          className="absolute inset-0 [mask-image:radial-gradient(ellipse_90%_85%_at_50%_45%,black_25%,transparent_100%)]"
+        >
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:1.75rem_1.75rem] opacity-70 dark:bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)]" />
+          <div className="hero-grid-sweep absolute inset-0 bg-[linear-gradient(to_right,#c8d2e0_1px,transparent_1px),linear-gradient(to_bottom,#c8d2e0_1px,transparent_1px)] bg-[size:1.75rem_1.75rem] dark:bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)]" />
+        </div>
         <div className="absolute left-1/2 top-0 h-px w-full bg-gradient-to-r from-transparent via-synaptic-mint/30 to-transparent" />
         <div className="absolute -right-32 top-24 h-96 w-96 rounded-full bg-synaptic-mint/10 blur-3xl" />
         <div className="absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-forest-trust/10 blur-3xl" />
@@ -29,7 +45,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-synaptic-mint/30 bg-synaptic-mint/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-forest-trust dark:text-synaptic-mint">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-xs font-semibold tracking-wide text-emerald-800 dark:border-synaptic-mint/30 dark:bg-synaptic-mint/10 dark:text-synaptic-mint">
                 <span className="relative flex h-2 w-2" aria-hidden="true">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-70" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
@@ -42,14 +58,14 @@ export default function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-              className="mt-6 font-display text-4xl font-extrabold tracking-tight text-brand-ink md:text-5xl lg:text-6xl dark:text-slate-50"
+              className="mt-6 font-display text-4xl font-extrabold tracking-tight text-brand-ink md:text-5xl lg:text-6xl"
             >
               A sinapse perfeita entre{" "}
-              <span className="text-brand-ink dark:text-synaptic-mint">
+              <span className="text-synaptic-mint">
                 visão humana
               </span>{" "}
               e{" "}
-              <span className="text-brand-ink dark:text-synaptic-mint">
+              <span className="text-synaptic-mint">
                 inteligência artificial
               </span>
               .
@@ -59,7 +75,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="mt-6 max-w-2xl text-lg leading-relaxed text-brand-muted"
+              className="mt-6 max-w-2xl text-lg leading-relaxed text-brand-body"
             >
               Do problema complexo ao resultado extraordinário, unimos visão de
               negócios, engenharia de software e inteligência artificial para
@@ -76,14 +92,14 @@ export default function Hero() {
             >
               <a
                 href="#contato"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#065F46] px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-emerald-800 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-slate-950"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-forest-trust px-7 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-forest-trust-light hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
                 Vamos Construir
                 <ArrowRight size={16} aria-hidden="true" />
               </a>
               <a
                 href="#solucoes"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200/50 bg-white px-7 py-3.5 text-sm font-semibold text-brand-ink shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-50 dark:shadow-none dark:hover:border-slate-700 dark:focus-visible:ring-offset-slate-950"
+                className="ui-card-hover inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-sm font-semibold text-brand-ink transition-all duration-300 ease-out hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-synaptic-mint focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
                 Explorar Soluções
                 <ChevronRight size={16} aria-hidden="true" />
@@ -103,7 +119,7 @@ export default function Hero() {
                 aria-hidden="true"
               />
               <div
-                className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_72%)] dark:bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)]"
+                className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] opacity-50 [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_72%)] dark:bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)]"
                 aria-hidden="true"
               />
               <div className="relative w-full px-2 py-8 sm:px-6">

@@ -2,9 +2,11 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustBadges from "@/components/TrustBadges";
 import Solutions from "@/components/Solutions";
-import Sinapse from "@/components/Sinapse";
 import Products from "@/components/Products";
+import Sinapse from "@/components/Sinapse";
 import ROICalculator from "@/components/ROICalculator";
+import Diagnostic from "@/components/Diagnostic";
+import Testimonials from "@/components/Testimonials";
 import DNA from "@/components/DNA";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
@@ -18,9 +20,11 @@ export default function Home() {
         <Hero />
         <TrustBadges />
         <Solutions />
-        <Sinapse />
         <Products />
+        <Sinapse />
         <ROICalculator />
+        <Diagnostic />
+        <Testimonials />
         <DNA />
         <FAQ />
         <Contact />

@@ -15,11 +15,11 @@ const badges: TrustBadge[] = [
 export default function TrustBadges() {
   return (
     <section
-      className="border-y border-slate-200/70 bg-white/50 dark:border-slate-800/70 dark:bg-slate-950/50"
+      className="border-y border-line bg-surface-2"
       aria-label="Conformidade e compliance"
     >
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <p className="text-center text-sm font-medium text-brand-muted opacity-80">
+        <p className="text-center text-sm font-medium text-brand-muted">
           Engenharia em conformidade com os mais rigorosos padrões corporativos
           e públicos:
         </p>
@@ -27,7 +27,7 @@ export default function TrustBadges() {
         <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
           {badges.map((badge) => (
             <li key={badge.label} className="flex">
-              <span className="group inline-flex items-center gap-2 text-sm text-brand-muted opacity-70 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:opacity-100">
+              <span className="group inline-flex items-center gap-2 text-sm text-brand-body transition-all duration-300 ease-out hover:-translate-y-0.5 hover:text-brand-ink">
                 <badge.icon
                   size={16}
                   aria-hidden="true"

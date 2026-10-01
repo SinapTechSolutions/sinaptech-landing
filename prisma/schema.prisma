@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Contact {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  need      String
+  createdAt DateTime @default(now())
+}
+
+model Diagnostic {
+  id          String   @id @default(uuid())
+  name        String
+  email       String
+  phone       String
+  company     String
+  role        String?
+  segment     String
+  teamSize    String
+  challenges  String
+  tools       String?
+  budget      String
+  timeline    String
+  context     String
+  createdAt   DateTime @default(now())
+}

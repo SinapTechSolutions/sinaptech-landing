@@ -1,9 +1,11 @@
 # Dev Agent - SINAPTECH Landing Page
 
 ## Role
+
 Engenheiro Frontend Staff especializado em Next.js, React, Tailwind CSS e Framer Motion.
 
 ## Responsabilidades
+
 - Desenvolver componentes React otimizados
 - Implementar animações com Framer Motion
 - Manter consistência visual e de código
@@ -13,15 +15,15 @@ Engenheiro Frontend Staff especializado em Next.js, React, Tailwind CSS e Framer
 
 ## Tech Stack
 
-| Tecnologia | Versão | Uso |
-|------------|--------|-----|
-| Next.js | 16.3.4 | Framework |
-| React | 19.2.8 | UI Library |
-| TypeScript | 5.x | Tipagem |
-| Tailwind CSS | 4.x | Estilização |
-| Framer Motion | 13.x | Animações |
-| Lucide React | 1.39.x | Ícones |
-| next-themes | latest | Dark/Light Mode |
+| Tecnologia    | Versão | Uso             |
+| ------------- | ------ | --------------- |
+| Next.js       | 16.3.4 | Framework       |
+| React         | 19.2.8 | UI Library      |
+| TypeScript    | 5.x    | Tipagem         |
+| Tailwind CSS  | 4.x    | Estilização     |
+| Framer Motion | 13.x   | Animações       |
+| Lucide React  | 1.39.x | Ícones          |
+| next-themes   | latest | Dark/Light Mode |
 
 ## Padrões de Código
 
@@ -41,23 +43,25 @@ src/
 
 ### Naming Conventions
 
-| Tipo | Exemplo | Descrição |
-|------|---------|-----------|
-| Componente | `Navbar.tsx` | PascalCase para componentes |
-| Hook | `useTheme.ts` | camelCase com prefixo `use` |
-| Util | `formatDate.ts` | camelCase para funções |
-| Constante | `COLORS.ts` | UPPER_SNAKE_CASE |
-| Tipo | `Theme.ts` | PascalCase para tipos |
+| Tipo       | Exemplo         | Descrição                   |
+| ---------- | --------------- | --------------------------- |
+| Componente | `Navbar.tsx`    | PascalCase para componentes |
+| Hook       | `useTheme.ts`   | camelCase com prefixo `use` |
+| Util       | `formatDate.ts` | camelCase para funções      |
+| Constante  | `COLORS.ts`     | UPPER_SNAKE_CASE            |
+| Tipo       | `Theme.ts`      | PascalCase para tipos       |
 
 ### Server vs Client Components
 
 **Server Components (padrão):**
+
 - Fetch de dados
 - Acesso a banco de dados
 - Uso de API keys
 - Componentes estáticos
 
 **Client Components (`"use client"`):**
+
 - State (`useState`)
 - Efeitos colaterais (`useEffect`)
 - Event handlers (`onClick`)
@@ -69,22 +73,22 @@ src/
 ```css
 /* Light Mode */
 :root {
-  --color-brand-snow: #FAFBFC;
+  --color-brand-snow: #fafbfc;
   --color-brand-ink: #111827;
-  --color-brand-muted: #6B7280;
+  --color-brand-muted: #6b7280;
   --color-forest-trust: #047857;
   --color-synaptic-mint: #059669;
-  --color-human-amber: #D97706;
+  --color-human-amber: #d97706;
 }
 
 /* Dark Mode */
 .dark {
-  --color-brand-snow: #0B1120;
-  --color-brand-ink: #F8FAFC;
-  --color-brand-muted: #94A3B8;
-  --color-forest-trust: #10B981;
-  --color-synaptic-mint: #34D399;
-  --color-human-amber: #FBBF24;
+  --color-brand-snow: #0b1120;
+  --color-brand-ink: #f8fafc;
+  --color-brand-muted: #94a3b8;
+  --color-forest-trust: #10b981;
+  --color-synaptic-mint: #34d399;
+  --color-human-amber: #fbbf24;
 }
 ```
 
@@ -92,14 +96,14 @@ src/
 
 ```tsx
 // Botão Primário
-className="rounded-xl bg-forest-trust px-7 py-3.5 text-sm font-semibold text-white 
-           transition-all duration-300 ease-out 
-           hover:bg-forest-trust-light hover:shadow-lg hover:-translate-y-0.5 
+className="rounded-xl bg-forest-trust px-7 py-3.5 text-sm font-semibold text-white
+           transition-all duration-300 ease-out
+           hover:bg-forest-trust-light hover:shadow-lg hover:-translate-y-0.5
            focus:outline-none focus:ring-2 focus:ring-synaptic-mint focus:ring-offset-2"
 
 // Card
-className="rounded-xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 
-           p-8 shadow-sm transition-all duration-300 ease-out 
+className="rounded-xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800
+           p-8 shadow-sm transition-all duration-300 ease-out
            hover:shadow-lg hover:-translate-y-1"
 
 // Glassmorphism
@@ -150,12 +154,14 @@ npm run build && npx wrangler pages deploy out --project-name=sinaptech-landing 
 ## Checklist de Desenvolvimento
 
 ### Antes de Começar
+
 - [ ] Entender o requisito
 - [ ] Verificar se já existe componente similar
 - [ ] Definir se será Server ou Client Component
 - [ ] Planejar a estrutura de props
 
 ### Durante o Desenvolvimento
+
 - [ ] Usar design tokens (CSS variables)
 - [ ] Implementar dark mode com classes `dark:`
 - [ ] Adicionar animações com Framer Motion
@@ -164,6 +170,7 @@ npm run build && npx wrangler pages deploy out --project-name=sinaptech-landing 
 - [ ] Usar `next/font` para fontes
 
 ### Após o Desenvolvimento
+
 - [ ] Rodar `npm run lint`
 - [ ] Rodar `npm run build`
 - [ ] Testar em mobile (320px+)
@@ -180,9 +187,7 @@ npm run build && npx wrangler pages deploy out --project-name=sinaptech-landing 
 import { motion } from "framer-motion";
 import { Icon } from "lucide-react";
 
-const items = [
-  { icon: Icon, title: "Título", description: "Descrição" },
-];
+const items = [{ icon: Icon, title: "Título", description: "Descrição" }];
 
 export default function BentoGrid() {
   return (
@@ -196,7 +201,7 @@ export default function BentoGrid() {
         >
           {/* Header */}
         </motion.div>
-        
+
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-6">
           {items.map((item, i) => (
             <motion.div
@@ -205,19 +210,19 @@ export default function BentoGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group rounded-xl bg-white dark:bg-slate-900 
-                         border border-gray-100 dark:border-slate-800 
-                         p-8 shadow-sm transition-all duration-300 
+              className="group rounded-xl bg-white dark:bg-slate-900
+                         border border-gray-100 dark:border-slate-800
+                         p-8 shadow-sm transition-all duration-300
                          hover:shadow-lg hover:-translate-y-1"
             >
               <item.icon className="text-synaptic-mint" />
-              <h3 className="font-display text-xl font-bold 
-                            text-brand-ink dark:text-white">
+              <h3
+                className="font-display text-xl font-bold
+                            text-brand-ink dark:text-white"
+              >
                 {item.title}
               </h3>
-              <p className="mt-3 text-brand-muted">
-                {item.description}
-              </p>
+              <p className="mt-3 text-brand-muted">{item.description}</p>
             </motion.div>
           ))}
         </div>

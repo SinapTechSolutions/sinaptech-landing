@@ -9,6 +9,7 @@ Landing page corporativa da SINAPTECH - Software House Premium especializada em 
 - next-themes (Light/Dark Mode)
 - Lucide React (Ícones)
 - TypeScript
+- Prisma + Neon Postgres
 
 ## Getting Started
 
@@ -26,12 +27,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 | Hero | Split-screen com animação de sinapse SVG + cards flutuantes |
 | TrustBadges | Badges de conformidade (LGPD, Licitações, Segurança) |
 | Solutions | Bento Grid de soluções (IA, SaaS, GovTech, Sob Demanda) |
+| Modal | Shell de modal genérico (overlay, Escape, foco, scroll-lock) |
 | SolutionModal | Modal de detalhes de cada solução |
-| Sinapse | Timeline do Ciclo Sináptico (4 etapas) |
+| Sinapse | Seção Metodologia — 4 etapas com entregáveis por etapa |
 | SynapseVisual | Animação SVG de rede neural |
 | Products | Carrossel de produtos proprietários (Tatame Squad) |
 | ROICalculator | Simulador de impacto operacional por segmento |
+| Diagnostic | Diagnóstico gratuito — CTA que abre o form em modal (e-mail + banco) |
 | DNA | Missão, Manifesto, Visão |
+| Testimonials | Depoimentos de clientes |
 | FAQ | Perguntas frequentes com accordion |
 | Contact | Formulário + info de contato (email, WhatsApp) |
 | ThemeToggle | Toggle light/dark com detecção automática do sistema |
@@ -41,8 +45,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 | Branch | Uso |
 |--------|-----|
-| `dev` | Desenvolvimento, features, fixes |
-| `master` | Deploy em produção |
+| `dev` | Desenvolvimento + deploy em produção |
+| `master` | Branch estável, atualizada apenas via PR |
 
 ### Desenvolvimento
 
@@ -54,21 +58,34 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Deploy em Produção
 
-1. Merge de `dev` → `master`
-2. Rode `npm run build` para gerar a build estática
-3. Deploy com `npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production`
+1. Rode `npm run build` para gerar a build estática
+2. Push para `dev` — o Vercel faz deploy automaticamente
+
+### Sincronizar com Master
+
+1. Abra um **Pull Request** de `dev` → `master`
+2. Após review e aprovação, merge via GitHub
 
 ## Deploy
 
-### Cloudflare Pages
+### Vercel
 
-- **URL Fixa:** https://production.sinaptech-landing.pages.dev
-- **Projeto:** sinaptech-landing
+- **URL:** https://sinaptech-landing.vercel.app
+- **Banco:** Neon Postgres (plano gratuito)
 
-### Atualizar Deploy
+### Configuração
+
+1. Conecte o repositório GitHub ao Vercel
+2. Adicione as variáveis `DATABASE_URL`, `DIRECT_URL`, `SMTP_HOST`, `SMTP_PORT`,
+   `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM` e `DIAGNOSTIC_TO_EMAIL` no painel do Vercel
+3. O deploy é automático a cada push na branch `dev`
+
+### Desenvolvimento Local
 
 ```bash
-npm run build && npx wrangler pages deploy out --project-name=sinaptech-landing --branch=production
+cp .env.example .env.local   # preencha DATABASE_URL, DIRECT_URL e SMTP
+npm run dev
+npx prisma db push           # cria Contact e Diagnostic (usa DIRECT_URL)
 ```
 
 ## Learn More

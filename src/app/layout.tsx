@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { MotionConfig } from "framer-motion";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -73,7 +74,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "CRAWDLER_VERIFICATION_CODE",
   },
 };
 
@@ -88,14 +89,14 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${inter.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen bg-slate-50 font-sans text-slate-900 antialiased dark:bg-[#0B1120] dark:text-slate-50">
+      <body className="min-h-screen font-sans antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <MotionConfig reducedMotion="user">{children}</MotionConfig>
         </ThemeProvider>
       </body>
     </html>
